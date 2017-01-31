@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmailViewController">
+            <connections>
+                <outlet property="emailText" destination="jbx-gR-vnk" id="3dL-fX-MhZ"/>
+                <outlet property="sureBtn" destination="of7-jY-p5u" id="huA-Zj-Ree"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-gR-vnk">
+                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="of7-jY-p5u">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="0.2784313725" green="0.63529411759999999" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="handleWithSureBtn:" destination="-1" eventType="touchUpInside" id="LqH-aR-p23"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jbx-gR-vnk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KY5-as-5pG"/>
+                <constraint firstItem="of7-jY-p5u" firstAttribute="width" secondItem="jbx-gR-vnk" secondAttribute="width" id="Li4-u5-jbG"/>
+                <constraint firstItem="jbx-gR-vnk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="54" id="XrW-Vo-9Rh">
+                    <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                </constraint>
+                <constraint firstItem="of7-jY-p5u" firstAttribute="top" secondItem="jbx-gR-vnk" secondAttribute="bottom" constant="39" id="bIK-P9-OOd"/>
+                <constraint firstItem="jbx-gR-vnk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="141" id="rdv-jk-YOp">
+                    <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                </constraint>
+                <constraint firstItem="of7-jY-p5u" firstAttribute="leading" secondItem="jbx-gR-vnk" secondAttribute="leading" id="z7N-66-vEa"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="jbx-gR-vnk"/>
+                    <exclude reference="of7-jY-p5u"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="KY5-as-5pG"/>
+                    <exclude reference="XrW-Vo-9Rh"/>
+                    <exclude reference="rdv-jk-YOp"/>
+                    <exclude reference="Li4-u5-jbG"/>
+                    <exclude reference="bIK-P9-OOd"/>
+                    <exclude reference="z7N-66-vEa"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="jbx-gR-vnk"/>
+                    <include reference="of7-jY-p5u"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="KY5-as-5pG"/>
+                    <include reference="XrW-Vo-9Rh"/>
+                    <include reference="rdv-jk-YOp"/>
+                    <include reference="Li4-u5-jbG"/>
+                    <include reference="bIK-P9-OOd"/>
+                    <include reference="z7N-66-vEa"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

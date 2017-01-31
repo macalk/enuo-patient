@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EndPayViewController">
+            <connections>
+                <outlet property="secretTextfield" destination="RVS-Ij-ulG" id="9zZ-hO-LbB"/>
+                <outlet property="sureButton" destination="lRB-1q-QYR" id="Gex-wq-lls"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请输入支付密码：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmW-ZY-AYC">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="F2R-kC-2di"/>
+                        <constraint firstAttribute="width" constant="194" id="MJ4-2o-yCl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="F2R-kC-2di"/>
+                            <exclude reference="MJ4-2o-yCl"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="F2R-kC-2di"/>
+                            <include reference="MJ4-2o-yCl"/>
+                        </mask>
+                    </variation>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVS-Ij-ulG">
+                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRB-1q-QYR">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="0.2784313725" green="0.63529411759999999" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="124" id="J4p-7y-ri8"/>
+                    </constraints>
+                    <state key="normal" title="确   认">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="J4p-7y-ri8"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="J4p-7y-ri8"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="handleSureButton:" destination="-1" eventType="touchUpInside" id="Snd-X0-OrE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="RVS-Ij-ulG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="51" id="VLN-LY-7RS"/>
+                <constraint firstItem="lRB-1q-QYR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZoP-gZ-hJ0"/>
+                <constraint firstItem="qmW-ZY-AYC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="56" id="b2l-xg-8sd"/>
+                <constraint firstItem="RVS-Ij-ulG" firstAttribute="top" secondItem="qmW-ZY-AYC" secondAttribute="bottom" constant="16" id="hA7-yw-F4R"/>
+                <constraint firstAttribute="trailing" secondItem="RVS-Ij-ulG" secondAttribute="trailing" constant="37" id="jIm-vc-HjE"/>
+                <constraint firstItem="lRB-1q-QYR" firstAttribute="top" secondItem="RVS-Ij-ulG" secondAttribute="bottom" constant="52" id="lqp-IG-CeA"/>
+                <constraint firstItem="qmW-ZY-AYC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="vjd-zt-dHs"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="qmW-ZY-AYC"/>
+                    <exclude reference="RVS-Ij-ulG"/>
+                    <exclude reference="lRB-1q-QYR"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="VLN-LY-7RS"/>
+                    <exclude reference="hA7-yw-F4R"/>
+                    <exclude reference="jIm-vc-HjE"/>
+                    <exclude reference="ZoP-gZ-hJ0"/>
+                    <exclude reference="lqp-IG-CeA"/>
+                    <exclude reference="b2l-xg-8sd"/>
+                    <exclude reference="vjd-zt-dHs"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="qmW-ZY-AYC"/>
+                    <include reference="RVS-Ij-ulG"/>
+                    <include reference="lRB-1q-QYR"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="VLN-LY-7RS"/>
+                    <include reference="hA7-yw-F4R"/>
+                    <include reference="jIm-vc-HjE"/>
+                    <include reference="ZoP-gZ-hJ0"/>
+                    <include reference="lqp-IG-CeA"/>
+                    <include reference="b2l-xg-8sd"/>
+                    <include reference="vjd-zt-dHs"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="105" y="63"/>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ILLLViewController">
+            <connections>
+                <outlet property="illText" destination="fye-uS-S1D" id="0x9-HP-2ul"/>
+                <outlet property="sureBtn" destination="YVn-DP-hGh" id="UlV-ii-d5h"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fye-uS-S1D">
+                    <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVn-DP-hGh">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="0.2784313725" green="0.63529411759999999" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="保存">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="handleWithSure:" destination="-1" eventType="touchUpInside" id="r9o-Bj-4ez"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fye-uS-S1D" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="87" id="Apj-Xg-cfM">
+                    <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                </constraint>
+                <constraint firstItem="fye-uS-S1D" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Gb0-cy-HQi"/>
+                <constraint firstItem="YVn-DP-hGh" firstAttribute="width" secondItem="fye-uS-S1D" secondAttribute="width" id="XLi-zc-HMe"/>
+                <constraint firstItem="YVn-DP-hGh" firstAttribute="leading" secondItem="fye-uS-S1D" secondAttribute="leading" id="bO0-ZO-MCH"/>
+                <constraint firstItem="YVn-DP-hGh" firstAttribute="top" secondItem="fye-uS-S1D" secondAttribute="bottom" constant="40" id="seD-gV-KvZ"/>
+                <constraint firstItem="fye-uS-S1D" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="121" id="udA-se-J7Z">
+                    <variation key="heightClass=regular-widthClass=compact" constant="30"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="fye-uS-S1D"/>
+                    <exclude reference="YVn-DP-hGh"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="Apj-Xg-cfM"/>
+                    <exclude reference="Gb0-cy-HQi"/>
+                    <exclude reference="udA-se-J7Z"/>
+                    <exclude reference="XLi-zc-HMe"/>
+                    <exclude reference="bO0-ZO-MCH"/>
+                    <exclude reference="seD-gV-KvZ"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="fye-uS-S1D"/>
+                    <include reference="YVn-DP-hGh"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="Apj-Xg-cfM"/>
+                    <include reference="Gb0-cy-HQi"/>
+                    <include reference="udA-se-J7Z"/>
+                    <include reference="XLi-zc-HMe"/>
+                    <include reference="bO0-ZO-MCH"/>
+                    <include reference="seD-gV-KvZ"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

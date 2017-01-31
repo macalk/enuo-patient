@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DanDanViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="292" height="172"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="292" height="172"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0W-A0-wBF">
+                        <rect key="frame" x="0.0" y="0.0" width="292" height="172"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZl-dz-BQ4">
+                                <rect key="frame" x="130" y="78" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bZl-dz-BQ4" firstAttribute="centerY" secondItem="G0W-A0-wBF" secondAttribute="centerY" id="Njx-hf-TRL"/>
+                            <constraint firstItem="bZl-dz-BQ4" firstAttribute="centerX" secondItem="G0W-A0-wBF" secondAttribute="centerX" id="ZEW-14-HXA"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="bZl-dz-BQ4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="bZl-dz-BQ4"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="G0W-A0-wBF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JqT-ga-eO4"/>
+                <constraint firstAttribute="bottom" secondItem="G0W-A0-wBF" secondAttribute="bottom" id="KY0-GU-S73"/>
+                <constraint firstAttribute="trailing" secondItem="G0W-A0-wBF" secondAttribute="trailing" id="dss-3N-Wks"/>
+                <constraint firstItem="G0W-A0-wBF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sd6-bm-0kM"/>
+            </constraints>
+            <size key="customSize" width="422" height="257"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="G0W-A0-wBF"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="G0W-A0-wBF"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="bgView" destination="G0W-A0-wBF" id="4Wj-TP-Bvw"/>
+                <outlet property="titleLabel" destination="bZl-dz-BQ4" id="Lb8-7k-Cug"/>
+            </connections>
+            <point key="canvasLocation" x="347" y="274"/>
+        </collectionViewCell>
+    </objects>
+</document>

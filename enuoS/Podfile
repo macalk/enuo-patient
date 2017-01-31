@@ -1,0 +1,22 @@
+
+platform :ios, ‘8.0’ 
+
+target 'enuoS' do
+
+pod 'AFNetworking', '~> 3.0.4'
+
+pod 'Masonry', '~> 0.6.4'
+pod 'SDWebImage', '~> 3.8.1'
+
+pod 'SVProgressHUD', '~> 2.0'
+pod 'MJRefresh', '~> 3.1.0'
+
+pod 'NJKWebViewProgress', '~> 0.2.3'
+pod 'BaiduMapKit', '~> 3.0.0'
+pod 'OBShapedButton', '~> 1.0.2'
+pod 'JSONModel'
+
+pod 'NIMSDK_LITE'
+pod 'NIMKit/Lite'
+
+end

@@ -1,0 +1,76 @@
+PODS:
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
+  - AFNetworking/NSURLSession (3.0.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.0.4)
+  - AFNetworking/Security (3.0.4)
+  - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
+    - AFNetworking/NSURLSession
+  - BaiduMapKit (3.0.0)
+  - JSONModel (1.7.0)
+  - M80AttributedLabel (1.5.0)
+  - Masonry (0.6.4)
+  - MJRefresh (3.1.12)
+  - NIMKit/Core (1.1.0):
+    - M80AttributedLabel (~> 1.5.0)
+    - SDWebImage (~> 3.8.2)
+    - SVProgressHUD (~> 2.0.3)
+    - Toast (~> 3.0)
+    - TZImagePickerController (~> 1.7.7)
+  - NIMKit/Lite (1.1.0):
+    - NIMKit/Core
+    - NIMSDK_LITE (~> 3.4.0)
+  - NIMSDK_LITE (3.4.0)
+  - NJKWebViewProgress (0.2.3):
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
+  - NJKWebViewProgress/Core (0.2.3)
+  - NJKWebViewProgress/ProgressView (0.2.3)
+  - OBShapedButton (1.0.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.0.4)
+  - Toast (3.1.0)
+  - TZImagePickerController (1.7.8)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.0.4)
+  - BaiduMapKit (~> 3.0.0)
+  - JSONModel
+  - Masonry (~> 0.6.4)
+  - MJRefresh (~> 3.1.0)
+  - NIMKit/Lite
+  - NIMSDK_LITE
+  - NJKWebViewProgress (~> 0.2.3)
+  - OBShapedButton (~> 1.0.2)
+  - SDWebImage (~> 3.8.1)
+  - SVProgressHUD (~> 2.0)
+
+SPEC CHECKSUMS:
+  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
+  BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  M80AttributedLabel: f2bf6608c3fa5475d3f753d4cc7e41dc2359c6c2
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  NIMKit: 324e362e66ab1fc85c44e68f9765a1103284539d
+  NIMSDK_LITE: 2cec204791a9ca1796a533895afa1ddf00f07bb8
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  OBShapedButton: ae2ae40dd98b934d4f76be1984c49db73893ada9
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+
+PODFILE CHECKSUM: 9415c81ecd9eb496f8a80eb1fddfa62136c683e1
+
+COCOAPODS: 1.1.1

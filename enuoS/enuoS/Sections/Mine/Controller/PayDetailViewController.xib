@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PayDetailViewController">
+            <connections>
+                <outlet property="methodLabel" destination="ODb-dH-Ann" id="dt7-TA-mAi"/>
+                <outlet property="moneyLabel" destination="F1g-p4-qua" id="kuB-QI-UI6"/>
+                <outlet property="numberLabel" destination="Jtz-Eb-Agv" id="af8-Gf-dYM"/>
+                <outlet property="usernameLabel" destination="8Ur-UO-UUT" id="dYf-Gs-o2i"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恭喜您，支付成功！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsQ-My-720">
+                    <rect key="frame" x="64" y="51" width="193" height="26"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的支付方式:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egR-Le-MdD">
+                    <rect key="frame" x="10" y="117" width="109" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的账号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzE-QR-lUQ">
+                    <rect key="frame" x="45" y="199" width="74" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODb-dH-Ann">
+                    <rect key="frame" x="129" y="117" width="26" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jtz-Eb-Agv">
+                    <rect key="frame" x="129" y="158" width="26" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ur-UO-UUT">
+                    <rect key="frame" x="129" y="199" width="43" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的支付金额:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lb-uf-1AU">
+                    <rect key="frame" x="10" y="240" width="109" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1g-p4-qua">
+                    <rect key="frame" x="129" y="240" width="26" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的订单号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6I-pe-V3s">
+                    <rect key="frame" x="27" y="158" width="92" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="BzE-QR-lUQ" firstAttribute="top" secondItem="d6I-pe-V3s" secondAttribute="bottom" constant="20" id="7hv-eb-8dW"/>
+                <constraint firstItem="F1g-p4-qua" firstAttribute="centerY" secondItem="5Lb-uf-1AU" secondAttribute="centerY" id="8gz-JE-nEW"/>
+                <constraint firstItem="F1g-p4-qua" firstAttribute="leading" secondItem="5Lb-uf-1AU" secondAttribute="trailing" constant="10" id="AT2-BX-7t6"/>
+                <constraint firstItem="ODb-dH-Ann" firstAttribute="centerY" secondItem="egR-Le-MdD" secondAttribute="centerY" id="BFV-Kn-5eQ"/>
+                <constraint firstItem="Jtz-Eb-Agv" firstAttribute="leading" secondItem="d6I-pe-V3s" secondAttribute="trailing" constant="10" id="LXf-8O-RWU"/>
+                <constraint firstItem="egR-Le-MdD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Myk-vi-3vr"/>
+                <constraint firstItem="d6I-pe-V3s" firstAttribute="top" secondItem="egR-Le-MdD" secondAttribute="bottom" constant="20" id="Utf-2G-uqC"/>
+                <constraint firstItem="FsQ-My-720" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="51" id="VLv-nu-vBf"/>
+                <constraint firstItem="Jtz-Eb-Agv" firstAttribute="centerY" secondItem="d6I-pe-V3s" secondAttribute="centerY" id="ZJ0-aV-JQ7"/>
+                <constraint firstItem="BzE-QR-lUQ" firstAttribute="trailing" secondItem="d6I-pe-V3s" secondAttribute="trailing" id="eHI-0L-owO"/>
+                <constraint firstItem="8Ur-UO-UUT" firstAttribute="centerY" secondItem="BzE-QR-lUQ" secondAttribute="centerY" id="es7-sz-YMc"/>
+                <constraint firstItem="egR-Le-MdD" firstAttribute="top" secondItem="FsQ-My-720" secondAttribute="bottom" constant="40" id="gV1-Vq-EQR"/>
+                <constraint firstItem="5Lb-uf-1AU" firstAttribute="trailing" secondItem="BzE-QR-lUQ" secondAttribute="trailing" id="olr-Jl-8Zd"/>
+                <constraint firstItem="d6I-pe-V3s" firstAttribute="trailing" secondItem="egR-Le-MdD" secondAttribute="trailing" id="q5u-Rn-bxP"/>
+                <constraint firstItem="8Ur-UO-UUT" firstAttribute="leading" secondItem="BzE-QR-lUQ" secondAttribute="trailing" constant="10" id="q9L-Tp-yf4"/>
+                <constraint firstItem="FsQ-My-720" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qzR-k7-2ub"/>
+                <constraint firstItem="ODb-dH-Ann" firstAttribute="leading" secondItem="egR-Le-MdD" secondAttribute="trailing" constant="10" id="rnB-YW-b6S"/>
+                <constraint firstItem="5Lb-uf-1AU" firstAttribute="top" secondItem="BzE-QR-lUQ" secondAttribute="bottom" constant="20" id="zh8-jJ-7es"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="FsQ-My-720"/>
+                    <exclude reference="egR-Le-MdD"/>
+                    <exclude reference="BzE-QR-lUQ"/>
+                    <exclude reference="ODb-dH-Ann"/>
+                    <exclude reference="Jtz-Eb-Agv"/>
+                    <exclude reference="8Ur-UO-UUT"/>
+                    <exclude reference="5Lb-uf-1AU"/>
+                    <exclude reference="F1g-p4-qua"/>
+                    <exclude reference="d6I-pe-V3s"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="FsQ-My-720"/>
+                    <include reference="egR-Le-MdD"/>
+                    <include reference="BzE-QR-lUQ"/>
+                    <include reference="ODb-dH-Ann"/>
+                    <include reference="Jtz-Eb-Agv"/>
+                    <include reference="8Ur-UO-UUT"/>
+                    <include reference="5Lb-uf-1AU"/>
+                    <include reference="F1g-p4-qua"/>
+                    <include reference="d6I-pe-V3s"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="238" y="173"/>
+        </view>
+    </objects>
+</document>

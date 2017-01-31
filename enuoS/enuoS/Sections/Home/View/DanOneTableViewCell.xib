@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="98" id="KGk-i7-Jjw" customClass="DanOneTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ip4-TF-yAp">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H35-ue-o7J">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H35-ue-o7J" firstAttribute="leading" secondItem="ip4-TF-yAp" secondAttribute="leading" constant="113" id="4LH-r5-aU6">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstItem="H35-ue-o7J" firstAttribute="top" secondItem="ip4-TF-yAp" secondAttribute="top" constant="5" id="5KD-M8-NL6"/>
+                            <constraint firstAttribute="trailing" secondItem="H35-ue-o7J" secondAttribute="trailing" constant="221" id="Abk-q0-ovr">
+                                <variation key="heightClass=regular-widthClass=compact" constant="5"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="H35-ue-o7J" secondAttribute="bottom" constant="5" id="bj9-OU-UCG"/>
+                            <constraint firstItem="H35-ue-o7J" firstAttribute="centerY" secondItem="ip4-TF-yAp" secondAttribute="centerY" id="ld2-Fe-od2"/>
+                            <constraint firstItem="H35-ue-o7J" firstAttribute="centerX" secondItem="ip4-TF-yAp" secondAttribute="centerX" id="niq-Ny-aQr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="H35-ue-o7J"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4LH-r5-aU6"/>
+                                <exclude reference="5KD-M8-NL6"/>
+                                <exclude reference="Abk-q0-ovr"/>
+                                <exclude reference="bj9-OU-UCG"/>
+                                <exclude reference="ld2-Fe-od2"/>
+                                <exclude reference="niq-Ny-aQr"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="H35-ue-o7J"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4LH-r5-aU6"/>
+                                <include reference="5KD-M8-NL6"/>
+                                <include reference="Abk-q0-ovr"/>
+                                <include reference="bj9-OU-UCG"/>
+                                <exclude reference="ld2-Fe-od2"/>
+                                <exclude reference="niq-Ny-aQr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="ip4-TF-yAp" secondAttribute="trailing" constant="46" id="Htt-1S-ue0">
+                        <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                    </constraint>
+                    <constraint firstItem="ip4-TF-yAp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="18" id="YjB-Pe-Ky3">
+                        <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                    </constraint>
+                    <constraint firstItem="ip4-TF-yAp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-23" id="Zrg-Vn-Ulv">
+                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                    </constraint>
+                    <constraint firstAttribute="bottomMargin" secondItem="ip4-TF-yAp" secondAttribute="bottom" constant="-24" id="suD-vw-Wd5">
+                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                    </constraint>
+                </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="ip4-TF-yAp"/>
+                    </mask>
+                    <mask key="constraints">
+                        <exclude reference="Htt-1S-ue0"/>
+                        <exclude reference="YjB-Pe-Ky3"/>
+                        <exclude reference="Zrg-Vn-Ulv"/>
+                        <exclude reference="suD-vw-Wd5"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="subviews">
+                        <include reference="ip4-TF-yAp"/>
+                    </mask>
+                    <mask key="constraints">
+                        <include reference="Htt-1S-ue0"/>
+                        <include reference="YjB-Pe-Ky3"/>
+                        <include reference="Zrg-Vn-Ulv"/>
+                        <include reference="suD-vw-Wd5"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="ip4-TF-yAp" id="Dui-td-NE4"/>
+                <outlet property="titleLabel" destination="H35-ue-o7J" id="L3U-iK-Vcj"/>
+            </connections>
+            <point key="canvasLocation" x="245" y="199"/>
+        </tableViewCell>
+    </objects>
+</document>
