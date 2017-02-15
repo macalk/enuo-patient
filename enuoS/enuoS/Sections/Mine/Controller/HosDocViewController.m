@@ -78,15 +78,14 @@
     NSString *url  = @"http://www.enuo120.com/index.php/app/hospital/keshi_doc";
     NSDictionary *heardBody = @{@"hid":self.hid,@"dep_id":self.dep_id};
     
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData: responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithData:(NSDictionary *)dic{

@@ -57,20 +57,14 @@
         
         NSDictionary *heardBody = @{@"username":name,@"ypaypassword":self.olderPassTextField.text,@"paypassword":self.changPassTextField.text};
         
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-      [manger POST:strs parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-          
-      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-          NSLog(@"resssss = %@",responseObject);
-          [self handelWithDic:responseObject];
-      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-          
-      }];
-    }
-    
-    
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:strs params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self handelWithDic:responseObject];
 
-    
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }
 }
 
 

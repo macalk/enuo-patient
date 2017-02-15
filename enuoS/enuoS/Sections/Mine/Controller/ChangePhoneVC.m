@@ -28,23 +28,15 @@
 
 //公钥加密
 - (void)getPublicKey {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:@"http://www.enuo120.com/Public/rsa/pub.key" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:@"http://www.enuo120.com/Public/rsa/pub.key" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         self.publickey = str;
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"shibai!!!");
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
 }
 
 - (IBAction)getYZCodeBtn:(UIButton *)sender {
@@ -64,19 +56,16 @@
         
         NSLog(@"%@~~~%@",phone,uuid);
         NSString *str1= @"http://www.enuo120.com/index.php/app/public/send_msg";
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+        BaseRequest *request = [[BaseRequest alloc]init];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:phone forKey:@"phone"];
         [dic setValue:uuid forKey:@"uuid"];
         [dic setValue:@"patient_change_phone" forKey:@"action"];
         [dic setValue:@"1.0" forKey:@"ver"];
-        [manger POST:str1 parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [request POST:str1 params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"responseObject = %@",responseObject);
             [self handleCodeMImaWithData:responseObject];
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
         
@@ -156,23 +145,19 @@
     NSString *name = [[NSUserDefaults standardUserDefaults]objectForKey:@"name"];
     
     NSString *str1= @"http://www.enuo120.com/index.php/app/public/check_code";
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+    BaseRequest *request = [[BaseRequest alloc]init];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:name forKey:@"username"];
     [dic setValue:self.phoneTextField.text forKey:@"phone"];
     [dic setValue:self.yzCodeTextField.text forKey:@"code"];
     [dic setValue:@"patient_change_phone" forKey:@"action"];
     [dic setValue:@"1.0" forKey:@"ver"];
-    [manger POST:str1 parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [request POST:str1 params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"responseObject = %@",responseObject);
         [self changePhoneWithData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
 }
 
 - (void)changePhoneWithData:(NSDictionary *)data{

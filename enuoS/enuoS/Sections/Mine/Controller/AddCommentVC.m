@@ -140,11 +140,11 @@
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/submit_zhui";
     NSDictionary *dic = @{@"ver":@"1.0",@"type":type,@"zhui":self.textView.text,@"dnumber":self.model.dnumber};
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@~~~~",responseObject);
         [self sendCommentRequestData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }

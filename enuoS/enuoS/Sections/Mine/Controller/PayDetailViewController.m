@@ -73,14 +73,13 @@
     NSString *str = @"http://www.enuo120.com/index.php/phone/Json/succed?username=%@&orderNo=%@";
     NSString *strUrl = [NSString stringWithFormat:str,name,self.resever];
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:strUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:strUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 

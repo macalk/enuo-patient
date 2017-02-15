@@ -130,25 +130,17 @@
 
 
 - (void)getPublicKey {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    [manager GET:@"http://www.enuo120.com/Public/rsa/pub.key" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    NSString *url = @"http://www.enuo120.com/Public/rsa/pub.key";
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         self.publickKey = str;
         
         //利用公钥对订单RSA加密
-        [self RSAEncryptor];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"shibai!!!");
+        [self RSAEncryptor];    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
     
 }
 //RSA加密

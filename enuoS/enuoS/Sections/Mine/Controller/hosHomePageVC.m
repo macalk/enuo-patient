@@ -176,19 +176,13 @@
     NSLog(@"name = %@",username);
     NSDictionary *heardBody = @{@"username":username,@"hid":self.receiver,@"ver":@"1.0"};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithHosData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
     
 }
 //医院详情页面数据处理
@@ -228,16 +222,11 @@
     
     NSDictionary *heardBody = @{@"hid":self.receiver,@"ver":@"1.0"};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDeskData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
@@ -272,17 +261,13 @@
     
     NSDictionary *heardBody = @{@"hid":self.receiver,@"ver":@"1.0",@"username":name,@"type":type};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self requestLikeHosData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+
 }
 
 - (void)requestLikeHosData:(NSDictionary *)dic {

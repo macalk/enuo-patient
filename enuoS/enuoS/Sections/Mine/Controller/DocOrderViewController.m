@@ -1029,17 +1029,14 @@ typedef NS_ENUM(NSUInteger, TTGState) {
     NSLog(@"receivre = %@",self.docId);
     NSDictionary *heardBody = @{@"username":username,@"did":self.docId,@"ver":@"1.0"};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"responseObject = %@",responseObject);
         [SVProgressHUD dismiss];
         [self handleWithData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"error = %@",error);
+
     }];
     
 }
@@ -1345,23 +1342,15 @@ typedef NS_ENUM(NSUInteger, TTGState) {
 
 - (void)requestIllListView:(NSString *)cid{
     NSString *url = @"http://www.enuo120.com/index.php/app/doctor/get_ill_info";
-    
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-     NSDictionary *heardBody = @{@"cid":cid};
-    
-    
-    [mager POST:url parameters:heardBody  progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *heardBody = @{@"cid":cid};
+
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"ressss = %@",responseObject);
         [self handleWithillData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
-    
 }
 
 - (void)handleWithillData:(NSDictionary *)dic{

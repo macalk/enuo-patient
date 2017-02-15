@@ -435,18 +435,13 @@
 
 - (void)requestBodyData{
     NSString *url = @"http://www.enuo120.com/index.php/app/index/zcbody";
-    
-    AFHTTPSessionManager *mangr = [AFHTTPSessionManager manager];
-    [mangr POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithBodyData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
+        
 }
 
 - (void)handleWithBodyData:(NSDictionary *)dic{

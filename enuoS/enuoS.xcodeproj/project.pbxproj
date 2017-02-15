@@ -1702,6 +1702,7 @@
 		18DDA1A21DE960C3002A225C /* 鼎@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "鼎@3x.png"; sourceTree = "<group>"; };
 		18DDA1B01DE97BB7002A225C /* HosHomePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HosHomePageView.h; sourceTree = "<group>"; };
 		18DDA1B11DE97BB7002A225C /* HosHomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HosHomePageView.m; sourceTree = "<group>"; };
+		18E7CE281E46CDCA005D9383 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18E9FC391D407A1900B089C6 /* PromisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromisesViewController.h; sourceTree = "<group>"; };
 		18E9FC3A1D407A1900B089C6 /* PromisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromisesViewController.m; sourceTree = "<group>"; };
 		18EAC7551DE06D760033FB42 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -1936,6 +1937,7 @@
 		181329B21D34B9DA00E6D5CE = {
 			isa = PBXGroup;
 			children = (
+				18E7CE281E46CDCA005D9383 /* PrefixHeader.pch */,
 				18D6E51F1DCC2F49008E4AD2 /* UIColor+Extend.h */,
 				18D6E5201DCC2F49008E4AD2 /* UIColor+Extend.m */,
 				18132B381D34C33200E6D5CE /* NSNull+NullCast.h */,
@@ -4419,6 +4421,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ALiPay",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -4470,6 +4474,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ALiPay",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",

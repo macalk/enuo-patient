@@ -32,6 +32,7 @@
 #import "ActiviceViewController.h"
 #import "FindHosVC.h"
 #import "SZKAlterView.h"
+#import "BaseRequest.h"
 
 #define APPURL @"http://itunes.apple.com/cn/lookup?id=1113857369"
 
@@ -143,13 +144,12 @@
     
     NSString *url = @"http://www.enuo120.com/index.php/app/index/check_update";
     
-    AFHTTPSessionManager *manger  =[AFHTTPSessionManager manager];
     
-    [manger POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self MandatoryUpData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
@@ -189,16 +189,15 @@
 
 //检测版本
 - (void)requestVersions {
-    AFHTTPSessionManager *manger  =[AFHTTPSessionManager manager];
     
-    [manger POST:APPURL parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:APPURL params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self VersionsData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
+    
 }
 
 - (void)VersionsData:(NSDictionary *)dic {
@@ -244,15 +243,13 @@
 //活动页面
 - (void)requestActiveData{
     NSString *str = @"http://www.enuo120.com/index.php/app/index/activity";
-    AFHTTPSessionManager *manger  =[AFHTTPSessionManager manager];
- 
-[manger POST:str parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
     
-} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    [self handleWithoNEActivity:responseObject];
-} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    
-}];
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleWithoNEActivity:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 
 }
 
@@ -311,17 +308,15 @@
 
 - (void)requestCarrData{
     NSString *url = @"http://www.enuo120.com/index.php/app/index/ads";
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-
-      [manger POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-          
-      } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-          NSLog(@"reeeee  = %@",responseObject);
-           [self handleCarrWithData:responseObject];
-      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-          NSLog(@"error = %@",error);
-      }];
-  
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"reeeee  = %@",responseObject);
+        [self handleCarrWithData:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"error = %@",error);
+        NSLog(@"1111");
+    }];
 
 }
 
@@ -673,22 +668,15 @@
 
 - (void)requestDeskData{
     NSString *url = @"http://www.enuo120.com/index.php/app/index/find_keshi";
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleWithDeskData:responseObject];
+        
+        [SVProgressHUD dismiss];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"1111");
 
-[mager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-    
-} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-           // NSLog(@" RESPONSEOBJECT = %@",responseObject);
-    
-            [self handleWithDeskData:responseObject];
-    
-            [SVProgressHUD dismiss];
-} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    
-}];
-    
-    
-    
+    }];
 }
 
 - (void)handleWithDeskData:(NSDictionary *)data{

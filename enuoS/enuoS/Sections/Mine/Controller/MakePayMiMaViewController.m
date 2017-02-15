@@ -57,18 +57,18 @@
 
     }else{
     
-    NSString *str = @"http://www.enuo120.com/index.php/phone/Json/setppw?username=%@&pass=%@";
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *name = [user objectForKey:@"name"];
-    NSString *url = [NSString stringWithFormat:str,name,self.oneTextField.text];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSString *str = @"http://www.enuo120.com/index.php/phone/Json/setppw?username=%@&pass=%@";
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        NSString *name = [user objectForKey:@"name"];
+        NSString *url = [NSString stringWithFormat:str,name,self.oneTextField.text];
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [self handelWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self handelWithDic:responseObject];
+            
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
     
     }
     

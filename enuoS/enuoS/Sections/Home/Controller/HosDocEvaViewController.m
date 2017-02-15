@@ -92,12 +92,11 @@
 - (void)requestData{
     NSString *str = @"http://www.enuo120.com/index.php/app/hospital/home_keshi_pj";
     NSDictionary *heardBody = @{@"hid":self.receiver};
-    AFHTTPSessionManager *mager= [AFHTTPSessionManager manager ];
-    [mager POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     

@@ -261,26 +261,13 @@
     NSDictionary *headBody = @{@"type":self.sumMark,@"search_val":searchView.ZZSearch.text,@"ver":@"1.0"};
     
     NSLog(@"headBody = %@",headBody);
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:str parameters:headBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:headBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithKeyData:responseObject];
-        NSLog(@"RESPOSE = %@",responseObject);
-        if (!_tableView ) {
-            NSLog(@"111111111111111111111111111");
-                  }
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
 }
 
 

@@ -153,15 +153,14 @@
     NSString *url = @"http://www.enuo120.com/index.php/app/index/zctj";
     NSDictionary *hearBody = @{@"id":self.receiver};
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:hearBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:hearBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithData:(NSDictionary *)dic{

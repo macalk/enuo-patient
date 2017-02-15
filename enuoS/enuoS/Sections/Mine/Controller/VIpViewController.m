@@ -94,16 +94,14 @@
     NSString *name = [stand objectForKey:@"name"];
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/vip";
     NSDictionary *heardBody = @{@"username":name};
-    AFHTTPSessionManager *menger = [AFHTTPSessionManager manager];
-    [menger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithResponseObject:(NSDictionary *)dic{

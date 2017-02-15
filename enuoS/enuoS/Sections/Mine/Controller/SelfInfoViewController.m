@@ -117,15 +117,14 @@
         NSString *nammme = [standUser objectForKey:@"name"];
     NSDictionary *heardBody =@{@"username":nammme};
     
-    AFHTTPSessionManager *menger = [AFHTTPSessionManager manager];
-    [menger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithData:(NSDictionary *)dic{
@@ -153,17 +152,14 @@
    
     if (self.nameSt &&self.emailStr) {
         NSDictionary *heardBody = @{@"username":self.name,@"email":self.emailStr,@"allergic":self.illStr,@"accupation":self.jobStr};
-        AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
         
-        [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-            }];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
+        
     }else{
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请补全信息" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];

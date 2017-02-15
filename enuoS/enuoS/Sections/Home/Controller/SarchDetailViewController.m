@@ -229,18 +229,14 @@
     NSLog(@"%@~~~%@",self.receiveMark,self.resualt);
     NSString *url = @"http://www.enuo120.com/index.php/app/search/search_result";
     NSDictionary *heardBody = @{@"type":self.receiveMark,@"search_val":self.resualt,@"ver":@"1.0"};
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
     
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithDic:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
     
 }
 

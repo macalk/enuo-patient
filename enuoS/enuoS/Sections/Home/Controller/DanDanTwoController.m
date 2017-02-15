@@ -221,14 +221,13 @@
     
     NSDictionary *headBody = @{@"id":self.cidreceiver};
     
-    AFHTTPSessionManager * mager =[AFHTTPSessionManager manager];
-    [mager POST:url parameters:headBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:headBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithData:(NSDictionary *)dic{

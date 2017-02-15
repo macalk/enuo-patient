@@ -130,17 +130,15 @@
     if (![self.nameSt isEqualToString:@""] && ![self.sexStr isEqualToString:@""]&&![self.cidStr isEqualToString:@""]&&![self.emailStr isEqualToString:@""]&& ![self.jobStr isEqualToString:@""] && ![self.illStr isEqualToString:@""]) {
         
         NSDictionary *heardBody = @{@"username":self.name,@"name":self.nameSt,@"sex":self.sexStr,@"ID_card":self.cidStr,@"email":self.emailStr,@"allergic":self.illStr,@"accupation":self.jobStr};
-        AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
         
-        [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
             [self handleWithSureWithData:responseObject];
-            
-           
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
+        
     }else{
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请补全信息" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];

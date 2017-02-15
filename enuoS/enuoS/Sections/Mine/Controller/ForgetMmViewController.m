@@ -82,26 +82,16 @@
 
 //公钥加密
 - (void)getPublicKey {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    [manager GET:@"http://www.enuo120.com/Public/rsa/pub.key" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:@"http://www.enuo120.com/Public/rsa/pub.key" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         self.publicKey = str;
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"shibai!!!");
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
-    
-    
 }
-
-
 //验证码
 - (IBAction)handleSendCodeBtn:(UIButton *)sender {
     
@@ -133,24 +123,19 @@
         NSString *uuid = [[UIDevice currentDevice].identifierForVendor UUIDString];
         
         NSString *str1= @"http://www.enuo120.com/index.php/app/public/send_msg";
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:phone forKey:@"phone"];
         [dic setValue:uuid forKey:@"uuid"];
         [dic setValue:@"patient_forget_pwd" forKey:@"action"];
         [dic setValue:@"1.0" forKey:@"ver"];
         NSLog(@"%@~~~%@~",phone,uuid);
-        [manger POST:str1 parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              NSLog(@"responseObject = %@",responseObject);
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:str1 params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"responseObject = %@",responseObject);
             [self handleCodeMImaWithData:responseObject];
-          
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
-        
-        
         
     }else{
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
@@ -233,18 +218,12 @@
     
     NSString *str = @"http://www.enuo120.com/index.php/app/patient/next_register";
     NSString *url = [NSString stringWithFormat:str,self.llTextField.text,self.checkCodeField.text];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:dic progress:^(NSProgress * _Nonnull downloadProgress) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleRequestData: responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-       [self handleRequestData: responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-}];
-    
-    
+    }];
 }
 - (void)handleRequestData:(NSDictionary *)data{
     

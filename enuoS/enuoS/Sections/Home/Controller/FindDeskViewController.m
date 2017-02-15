@@ -416,15 +416,12 @@
         [dic setValue:self.selectillBtnTitle forKey:@"ill"];
     }
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    [manegr POST:str parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleDataWithIllDetailWith:responseObject];
-      
+        
         NSLog(@"self.secondDataArray  = %@",self.secondDataArray);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
@@ -454,22 +451,15 @@
 //暂时用来筛选(筛选中的科室)
 - (void)requestAllHosData{
     NSString *url = @"http://www.enuo120.com/index.php/App/index/get_sdep_list";
-    
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    
     NSDictionary *heardBody = @{@"dep_id":self.receiver,@"ver":@"1.0"};
-    
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDocDataWithDoc: responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
-    
-    
-    
 }
 
 - (void)handleWithDocDataWithDoc:(NSDictionary *)data{
@@ -493,20 +483,16 @@
 //暂时用来筛选(筛选中的疾病)
 - (void)requestIllDataWithWay:(NSString *)way {
     NSString *url = @"http://www.enuo120.com/index.php/App/index/get_dep_mb_list";
-    
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    
-    NSLog(@"%@~~%@",self.dep_id,self.sdep_id);
     NSDictionary *heardBody = @{@"dep_id":self.dep_id,@"sdep_id":self.sdep_id,@"ver":@"1.0"};
     
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithIllDataWithDoc: responseObject withWay:way];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
+
 }
 
 - (void)handleWithIllDataWithDoc:(NSDictionary *)data withWay:(NSString *)way {

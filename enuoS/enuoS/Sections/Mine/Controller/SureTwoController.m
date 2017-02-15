@@ -204,30 +204,26 @@
     NSString *url = [NSString stringWithFormat:str,model.cid,model.step,self.pidStr];
     
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"支付成功" delegate:self cancelButtonTitle:@"确认" otherButtonTitles: nil];
-                alert.delegate = self;
-                [alert show];
-            }else{
-                UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:@"支付成功" preferredStyle:UIAlertControllerStyleAlert];
-                [alertView addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self presentViewController:rooVC animated:YES completion:^{
-                        
-                    }];
-                }]];
-                [self presentViewController:alertView animated:YES completion:^{
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"支付成功" delegate:self cancelButtonTitle:@"确认" otherButtonTitles: nil];
+            alert.delegate = self;
+            [alert show];
+        }else{
+            UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"提示" message:@"支付成功" preferredStyle:UIAlertControllerStyleAlert];
+            [alertView addAction:[UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self presentViewController:rooVC animated:YES completion:^{
                     
                 }];
-            }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            }]];
+            [self presentViewController:alertView animated:YES completion:^{
+                
+            }];
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
 }
 
 
@@ -242,18 +238,14 @@
     }
    self.strUrl = [NSString stringWithFormat:str,st,model.cid,self.quanUrl,model.step];
     NSLog(@"strurl = %@",_strUrl);
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:_strUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:_strUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWeixinWithDic:responseObject];
-        NSLog(@"responseObject = %@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
     
 }
 
@@ -296,16 +288,15 @@
     NSString *str = @"http://www.enuo120.com/index.php/phone/Json/penuo?username=%@&pro=%@";
     NSString *url = [NSString stringWithFormat:str,name,self.receiver];
     NSLog(@"urururrururu = %@",url);
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleGetWithRecponseObject:responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
+    
 }
 
 - (void)handleGetWithRecponseObject:(NSDictionary *)data{

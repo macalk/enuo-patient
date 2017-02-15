@@ -207,16 +207,16 @@
 - (void)requestData{
     NSString *url = @"http://www.enuo120.com/index.php/App/index/get_sdep_list";
     NSDictionary *dic = @{@"dep_id":@"11"};
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request =[[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithdic:responseObject];
         NSLog(@"re = %@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 

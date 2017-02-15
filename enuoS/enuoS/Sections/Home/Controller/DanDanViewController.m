@@ -206,12 +206,10 @@
 - (void)requestOneData{
    NSString *url = @"http://www.enuo120.com/index.php/app/publish/zl";
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handelWithZlData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
@@ -231,16 +229,12 @@
 - (void)requestTwoData{
     NSString *url = @"http://www.enuo120.com/index.php/app/publish/zd";
     
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    
-    [mager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handelWithZdData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
     
 }
 

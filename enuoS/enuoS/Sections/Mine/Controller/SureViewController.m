@@ -157,18 +157,15 @@
     
     NSString *url = [NSString stringWithFormat:str,name];
     NSLog(@"url = %@",url);
-    AFHTTPSessionManager *manger= [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleGetDataWithData:responseObject];
         [SVProgressHUD dismiss];
-        // NSLog(@"respondObjct = %@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
-
 }
 
 - (void)handleGetDataWithData:(NSDictionary *)dic{
@@ -225,14 +222,14 @@
 - (void)requestTwoDataWith:(NSString *)str{
     NSString* strOne = @"http://www.enuo120.com/index.php/phone/Json/qxappoint?pro=%@";
     NSString *url = [NSString stringWithFormat:strOne,str];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDataWithQX:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)handleWithDataWithQX:(NSDictionary *)data{

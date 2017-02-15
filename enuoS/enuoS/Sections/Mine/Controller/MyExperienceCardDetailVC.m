@@ -217,15 +217,16 @@
 
 
 - (void)requestWithStatus:(NSString *)status {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSString *name = [[NSUserDefaults standardUserDefaults]objectForKey:@"name"];
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/experience";
     NSDictionary *dic = @{@"statue":status,@"username":name};
     
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self requestDataWithStatus:status withData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }

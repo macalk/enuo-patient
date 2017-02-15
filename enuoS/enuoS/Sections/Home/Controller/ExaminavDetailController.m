@@ -222,23 +222,15 @@
     NSString *url = @"http://www.enuo120.com/index.php/app/index/zczz";
     
       NSDictionary *heardBody = @{@"bid":cid,@"sex":self.receiver};
-    
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         NSLog(@"responseObject = %@",responseObject);
         [self handleWithBodyIllData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
-    
-    
+  
 }
 - (void)handleWithBodyIllData:(NSDictionary *)dic{
     NSArray *arr = dic[@"data"];
@@ -264,26 +256,20 @@
 
 - (void)requestBodyData{
     NSString *url = @"http://www.enuo120.com/index.php/app/index/zcbody";
-    
-    AFHTTPSessionManager *mangr = [AFHTTPSessionManager manager];
     NSDictionary *heardBody = @{@"pbody":self.pbody};
-    [mangr POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithBodyData:responseObject];
         if (self.oneArray.count !=0) {
-             BodyModel *model = self.oneArray[0];
+            BodyModel *model = self.oneArray[0];
             [self requestTwoBodyData:model.cid];
-
         }
-       
 
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
     
 }
 

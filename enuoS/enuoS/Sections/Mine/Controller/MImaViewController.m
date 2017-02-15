@@ -53,14 +53,14 @@
         NSString *url = [NSString stringWithFormat:strs,name,self.olderPassTextField.text,self.changPassTextField.text];
         
         NSDictionary *heardBody  = @{@"username":name,@"ypassword":self.olderPassTextField.text,@"password":self.changPassTextField.text};
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-        [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
             [self handelWithDic:responseObject];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
+        
     }
 
 

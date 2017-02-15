@@ -74,18 +74,14 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *name = [userDefaults objectForKey:@"name"];
     NSString *url = [NSString stringWithFormat:str,name];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    NSLog(@"url = %@",url);
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD dismiss];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
-
 }
 - (void)handleWithData:(NSDictionary *)dic{
      NSArray *arr = dic[@"data"];

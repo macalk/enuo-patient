@@ -225,16 +225,14 @@
     if (username == nil) {
         username = @"";
     }
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-       NSDictionary *heardBody = @{@"ver":@"1.0",@"username":username};
-    
- [manger POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-     
- } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-     [self handleWithData:responseObject];
- } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-     
- }];
+    NSDictionary *heardBody = @{@"ver":@"1.0",@"username":username};
+
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleWithData:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 
 }
 
@@ -266,20 +264,15 @@
     if (username == nil) {
         username = @"";
     }
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
     NSDictionary *heardBody = @{@"did":cid,@"username":username,@"type":[NSString stringWithFormat:@"%ld",(long)type],@"ver":@"1.0"};
-    
-    [manger POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithAttentionData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    }
+}
 
 - (void)handleWithAttentionData:(NSDictionary *)dic {
     

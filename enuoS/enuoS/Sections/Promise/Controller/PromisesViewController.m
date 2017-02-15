@@ -363,15 +363,15 @@
 
 - (void)requestDeskData{
     NSString *str = @"http://www.enuo120.com/index.php/app/index/find_keshi";
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
     
-    [manger POST:str parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDeskWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 
@@ -407,21 +407,19 @@
 
 - (void)requestDeskDetailDataWith:(NSString *)Cid{
     NSString *str = @"http://www.enuo120.com/index.php/App/index/get_sdep_list";
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
     
     NSString *strHeader =  [NSString stringWithFormat:@"dep_id=%@",Cid];
     NSDictionary *heardBody = @{@"dep_id":Cid};
    // NSLog(@"strHeader = %@",strHeader);
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-  
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleDataWithDeskDetailWith:responseObject];
         [self.menu netLoadSecondArray:self.secondDataArray];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+
 }
 
 
@@ -455,22 +453,16 @@
 //    NSString *sdep = @"sdep_id";
 //    NSString *dep = @"dep_id";
     NSString * page = [NSString stringWithFormat:@"%ld",(long)self.num];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-//     manger.responseSerializer.acceptableContentTypes = [NSSetsetWithObject:@"text/html"];
     NSDictionary *heardBody = @{@"page":page,@"sort_order":self.sort_order, @"dep_id":self.dep_id,@"sdep_id":self.sdep_id};
     
-    NSLog(@"heardBody = %@",heardBody);
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDataWithDoc: responseObject];
-     //NSLog(@"resp[nde = %@",responseObject);
-          [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+        [SVProgressHUD dismiss];
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
-    
-    
     
 }
 

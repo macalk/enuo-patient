@@ -419,18 +419,14 @@
     
     NSDictionary *hearbody = @{@"username":name};
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:hearbody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:hearbody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
         NSLog(@"resss = %@",responseObject);
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
-
 }
 
 - (void)handleWithData:(NSDictionary *)dic{

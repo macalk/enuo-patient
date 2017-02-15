@@ -148,15 +148,15 @@
 - (void)requestData{
     NSString *url = @"http://www.enuo120.com/index.php/app/search/many_doctor";
     NSDictionary *heardBody = @{@"ill":self.receiver,@"ver":@"1.0"};
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 //筛选请求
 - (void)screenOutRequest {
@@ -170,13 +170,14 @@
     
     NSDictionary *heardBody = @{@"ill":self.receiver,@"category":self.selectCateBtn.currentTitle,@"treat":self.selectTreatBtn.currentTitle,@"hid":self.selectHosId,@"ver":@"1.0"};
     
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 

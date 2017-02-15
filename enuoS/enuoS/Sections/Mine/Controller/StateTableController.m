@@ -73,16 +73,14 @@
     NSString *name = [userDefaults objectForKey:@"name"];
     NSString *str = @"http://www.enuo120.com/index.php/phone/Json/ptrecord?username=%@";
     NSString *url = [NSString stringWithFormat:str,name];
-    AFHTTPSessionManager *manger =  [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
+        
 }
 - (void)handleWithDic:(NSDictionary *)dic{
     if ([dic[@"data"] isKindOfClass:[NSNull class]]|| [dic[@"data"] isEqual: @""]||[dic[@"data"]isKindOfClass:[NSNumber class]] )  {

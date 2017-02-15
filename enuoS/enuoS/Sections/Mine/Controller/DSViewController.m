@@ -99,13 +99,10 @@
 //金钱取得
 - (void)requestDataMoney{
     NSString *url = @"http://www.enuo120.com/index.php/app/patient/doc_money";
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithMoneyWith:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
@@ -127,14 +124,14 @@
     NSUserDefaults *statStand = [NSUserDefaults standardUserDefaults];
     NSString *name = [statStand objectForKey:@"name"];
     NSDictionary *heardBody = @{@"username":name};
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDic:responseObject];
         NSLog(@"responseObject = %@",responseObject);
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
@@ -327,20 +324,19 @@
 
 - (void)requsetTwoData:(NSString *)sender{
    
-    NSString *str = @"http://www.enuo120.com/index.php/app/patient/wx_doc_pay";
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    
+    NSString *str = @"http://www.enuo120.com/index.php/app/patient/wx_doc_pay";    
     
     NSDictionary *heardBody = @{@"dnumber":self.dnumbbb,@"type":@"apk",@"pay_total":sender};
     NSLog(@"heardBody = %@",heardBody);
-    [ manger POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-         
-     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-         [self handleWXWithData:responseObject];
-     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         
-     }];
-    }
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleWXWithData:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
+}
 - (void)handleWXWithData:(NSDictionary *)data{
         NSArray *arr=  data[@"data"];
         for (NSDictionary *temp in arr) {

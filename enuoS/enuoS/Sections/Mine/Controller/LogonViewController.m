@@ -256,14 +256,11 @@
     
     NSDictionary *heardBody  = @{@"username":self.numText.text,@"password":self.passwordText.text};
     
-    AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"ress = %@",responseObject);
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithLogoData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
     
 }

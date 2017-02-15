@@ -77,12 +77,14 @@
 - (void)dateRequest {
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/experience_guahao";
     NSDictionary *dic = @{@"cardno":self.cardno};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self dateRequestWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)dateRequestWithData:(NSDictionary *)dic {
@@ -402,12 +404,14 @@
     
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/experience_kanb";
     NSDictionary *dic = @{@"cardno":self.cardno,@"date":self.selectDate,@"username":username,@"hos_id":self.hosID};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self requestWithSureBtnData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)requestWithSureBtnData:(NSDictionary *)dic {

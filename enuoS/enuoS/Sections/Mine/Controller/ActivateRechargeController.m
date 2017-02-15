@@ -101,12 +101,10 @@
     NSString *url = [NSString stringWithFormat:str,name,self.cardTextField.text,self.passwordField.text];
     NSDictionary *heardBody = @{@"username":name,@"cardno":self.cardTextField.text,@"password":self.passwordField.text};
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *manger = [[BaseRequest alloc]init];
+    [manger POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 

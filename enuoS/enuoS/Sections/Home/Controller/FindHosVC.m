@@ -156,39 +156,32 @@
         [dic setObject:@"1.0" forKey:@"ver"];
     }
     
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:str parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
     
 }
 //请求筛选数据
 - (void)requestFiltrateData {
     //地区
     NSString *str = @"http://www.enuo120.com/index.php/app/Index/get_area_list";
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:str parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *name = @"area";
         [self FiltrateData:responseObject withWho:name];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     
     //地区下的科室
     NSString *docStr = @"http://www.enuo120.com/index.php/app/Index/get_sort_list";
-    [manger POST:docStr parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [request POST:docStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *name = @"sort";
         [self FiltrateData:responseObject withWho:name];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     

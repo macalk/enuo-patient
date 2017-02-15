@@ -156,14 +156,13 @@
     
     NSLog(@"%@",self.receiver);
     NSString * page = [NSString stringWithFormat:@"%ld",(long)self.num];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    //     manger.responseSerializer.acceptableContentTypes = [NSSetsetWithObject:@"text/html"];
     NSDictionary *heardBody = @{@"page":page, @"dep_id":@"11",@"sdep_id":self.receiver};
-    [manger POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDataWithDoc:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     

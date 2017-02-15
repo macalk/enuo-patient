@@ -132,17 +132,16 @@
 
 - (void)requestData {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
     NSString *name = [[NSUserDefaults standardUserDefaults]objectForKey:@"name"];
     NSDictionary *dic = @{@"username":name};
-    [manager POST:@"http://www.enuo120.com/index.php/app/Patient/scene" parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:@"http://www.enuo120.com/index.php/app/Patient/scene" params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self requestOfData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 
 - (void)requestOfData:(NSDictionary *)dic {

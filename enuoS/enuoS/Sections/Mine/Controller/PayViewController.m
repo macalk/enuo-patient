@@ -406,15 +406,14 @@ static NSString *kLLPartnerKey = @"201604011433_hzjn_qbz";   // 密钥
 }
 - (void)requsetTwoData{
 
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:self.twoUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:self.twoUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWXWithData:responseObject];
-        NSLog(@"responseObject = %@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 - (void)handleWXWithData:(NSDictionary *)data{
       NSArray *arr=  data[@"data"];
@@ -454,12 +453,10 @@ static NSString *kLLPartnerKey = @"201604011433_hzjn_qbz";   // 密钥
 
 
 - (void)requestOneData{
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:self.oneUrl parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:self.oneUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }

@@ -72,13 +72,11 @@
     
     
     NSString *url = [NSString stringWithFormat:str,name,self.secretTextfield.text,self.oneReceiver];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleViewWithData:responseObject];
         NSLog(@"responseObject = %@",responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
     

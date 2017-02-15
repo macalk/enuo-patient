@@ -120,18 +120,17 @@
     
     NSUserDefaults *userStand = [NSUserDefaults standardUserDefaults];
     NSString *name = [userStand objectForKey:@"name"];
-     AFHTTPSessionManager *mager = [AFHTTPSessionManager manager];
+    BaseRequest *request = [[BaseRequest alloc]init];
     if (name) {
-            NSDictionary *hearBody = @{@"username":name};
-         [mager POST:url parameters:hearBody progress:^(NSProgress * _Nonnull uploadProgress) {
-             
-         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             [self handleWithDataStatue:responseObject];
-             NSLog(@"ressponse =%@",responseObject);
-             [self creatHeadView];
-         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-             
-         }];
+        NSDictionary *hearBody = @{@"username":name};
+        [request POST:url params:hearBody success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self handleWithDataStatue:responseObject];
+            NSLog(@"ressponse =%@",responseObject);
+            [self creatHeadView];
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+        
     }else{
           [self creatHeadView];
     }

@@ -61,22 +61,15 @@
 }
 
 - (void)getPublicKey {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:@"http://www.enuo120.com/Public/rsa/pub.key" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:@"http://www.enuo120.com/Public/rsa/pub.key" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         self.publicKey = str;
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"shibai!!!");
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
     
 }
 
@@ -111,17 +104,13 @@
     NSString *str = @"http://www.enuo120.com/index.php/app/patient/set_pwd";
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         [dic setValue:urlText forKey:@"url"];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:str parameters:dic progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@",responseObject);
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:str params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self handleWithData:responseObject];
 
-        [self handleWithData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
     }
 }
 

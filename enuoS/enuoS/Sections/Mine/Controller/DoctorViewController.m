@@ -741,19 +741,14 @@ UIButton *attentionBtn;
       NSDictionary *heardBody = @{@"username":username,@"did":self.receiver,@"ver":@"1.0"};
     
     NSLog(@"%@~~~%@",username,self.receiver);
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-           NSLog(@"responseObject = %@",responseObject);
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
         [SVProgressHUD dismiss];
         [self handleWithData:responseObject];
-   
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
-    
 }
 - (void)handleWithData:(NSDictionary *)dic{
  
@@ -953,7 +948,6 @@ UIButton *attentionBtn;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *name = [userDefault objectForKey:@"name"];
    
-    AFHTTPSessionManager *mager  = [AFHTTPSessionManager manager];
     NSString *a = [[NSString alloc]init];
     if (attentionBtn.selected ==NO) {
         a = @"1";
@@ -962,14 +956,12 @@ UIButton *attentionBtn;
     }
     NSDictionary *heardBody = @{@"username":name,@"did":self.receiver,@"type":a};
 
-[mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-    
-} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-    [self handelWithGuanZhuData:responseObject];
-} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    
-}];
-    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handelWithGuanZhuData:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (void)handelWithGuanZhuData:(NSDictionary *)dic{

@@ -476,7 +476,6 @@ UIButton *markBtn;
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *name = [userDefault objectForKey:@"name"];
     NSString *url = @"http://www.enuo120.com/index.php/app/patient/guanzhuh";
-    AFHTTPSessionManager *mager  = [AFHTTPSessionManager manager];
     NSString *a = [[NSString alloc]init];
     if (self.gunanzhu ==NO) {
         a = @"1";
@@ -486,16 +485,14 @@ UIButton *markBtn;
     
     NSDictionary *heardBody = @{@"username":name,@"hid":self.receiver,@"type":a};
     NSLog(@"heradaBody = %@",heardBody);
-    [mager POST:url parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"RESPONSEoBJECT = %@",responseObject);
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handelWithGuanZhuData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
     
 }
 
@@ -554,22 +551,13 @@ UIButton *markBtn;
     NSLog(@"name = %@",username);
     NSDictionary *heardBody = @{@"username":username,@"hid":self.receiver};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-      NSLog(@"responseObject = %@",responseObject);
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         [self handleWithHosData:responseObject];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-
-    
-    
     
 }
 //医院详情页面数据处理
@@ -620,14 +608,9 @@ UIButton *markBtn;
     NSString *str = @"http://www.enuo120.com/index.php/app/hospital/home_keshi";
     NSDictionary *heardBody = @{@"hid":self.receiver};
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    
-    
-    
-    [manegr POST:str parameters:heardBody progress:^(NSProgress * _Nonnull uploadProgress) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:heardBody success:^(NSURLSessionDataTask *task, id responseObject) {
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"responseObject = %@",responseObject);
         [SVProgressHUD dismiss];
         // [self handleWithData:responseObject];
         [self handleKeShiWithData:responseObject];
@@ -664,21 +647,17 @@ UIButton *markBtn;
                     width = width+titleSize.width;
                 }
                 number++;
-              
+                
                 [self.deskView addSubview:button];
             }
             [self.tabelView reloadData];
         }
         
 
-        
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-
-
+    
 }
 
 //科室

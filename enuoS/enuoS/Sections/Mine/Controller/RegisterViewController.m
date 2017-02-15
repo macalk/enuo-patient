@@ -334,16 +334,12 @@
     [dic setValue:self.yzCodeText.text forKey:@"code"];
     [dic setValue:@"1.0" forKey:@"ver"];
     
-    
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self nextStepWithData:responseObject];
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败");
     }];
     
 }
@@ -388,19 +384,14 @@
             //登陆成功后把用户名和密码存储到UserDefault
             [userDefaults setObject:self.accountTextField.text forKey:@"nameOne"];
             [str3 setValue:self.passText.text forKey:@"password"];
-            AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
             [str3 setValue:self.yzCodeText.text forKey:@"code"];
             
-            [manger POST:url parameters:str3 progress:^(NSProgress * _Nonnull uploadProgress) {
-                
-            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"responseObject = %@",responseObject);
+            BaseRequest *request = [[BaseRequest alloc]init];
+            [request POST:url params:str3 success:^(NSURLSessionDataTask *task, id responseObject) {
                 [self handleWithRegisterOfData:responseObject];
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
                 
             }];
-            
-            
             
         }
     }else{
@@ -483,21 +474,15 @@
 
 //对手机号码加密
 - (void)getPublicKey {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:@"http://www.enuo120.com/Public/rsa/pub.key" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:@"http://www.enuo120.com/Public/rsa/pub.key" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *str = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"%@",str);
         self.publickKey = str;
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"shibai!!!");
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
     
 }
 //RSA加密
@@ -551,15 +536,10 @@
         [dic setValue:@"patient_register" forKey:@"action"];
         [dic setValue:@"1.0" forKey:@"ver"];
 
-        
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-        [manger POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
             [self handleCodeMImaWithData:responseObject];
-            NSLog(@"responseObject = %@",responseObject);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"error = %@",error);
             if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"验证过于频繁，请稍后再试" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
@@ -574,10 +554,7 @@
                 }];
             }
         }];
-        
-        
-        
-        
+                
     }else{
         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入正确手机号" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];

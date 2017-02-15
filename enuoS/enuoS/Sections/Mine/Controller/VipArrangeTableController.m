@@ -116,14 +116,15 @@
 //数据请求
 - (void)requestData{
     NSString *str = @"http://www.enuo120.com/index.php/phone/json/viparange";
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    [manegr GET:str parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 - (void)handleWithDic:(NSDictionary *)dic{
     

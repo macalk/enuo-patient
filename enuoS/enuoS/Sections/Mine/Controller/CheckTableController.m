@@ -96,18 +96,13 @@
     NSString *name = [userDefaults objectForKey: @"name"];
     NSString *url = [NSString stringWithFormat:str,name];
     
-    AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-    [manegr GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleOneWithDic:responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
-    
-    
 }
 
 - (void)handleOneWithDic:(NSDictionary *)dic{
@@ -174,12 +169,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *name = [userDefaults objectForKey: @"name"];
     NSString *url = [NSString stringWithFormat:str,name];
-    AFHTTPSessionManager *mager= [AFHTTPSessionManager manager];
-    [mager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithTwoData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 
@@ -269,14 +262,13 @@
          AppointChecKModel *model = self.dataOneArr[indexPath.row];
        NSString *str = @"http://www.enuo120.com/index.php/phone/Json/backapply?dnumber=%@";
         NSString *url = [NSString stringWithFormat:str,model.dnumber];
-        AFHTTPSessionManager *manegr = [AFHTTPSessionManager manager];
-        [manegr GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
+        
         
         
     }
@@ -328,12 +320,10 @@
         ConfircheckModel *model = self.dataOneArr[indexPath.row];
         NSString *str = @"http://www.enuo120.com/index.php/phone/Json/qxcheck?pro=%@";
         NSString *url = [NSString stringWithFormat:str,model.dnumber];
-        AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-        [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        BaseRequest *request = [[BaseRequest alloc]init];
+        [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             [self handleWithPassBtn:responseObject];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
 
@@ -406,14 +396,13 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *name = [userDefaults objectForKey: @"name"];
     NSString *url = [NSString stringWithFormat:str,name];
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleAppointWithDic:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 - (void)handleAppointWithDic:(NSDictionary *)dic{
     if ([dic[@"data"] isKindOfClass:[NSNull class]]|| [dic[@"data"] isEqual: @""]||[dic[@"data"]isKindOfClass:[NSNumber class]] )  {

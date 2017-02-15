@@ -366,10 +366,12 @@
     NSDictionary *dic = @{@"username":username,@"statue":statue};
     
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/experience_order";
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self requestOrderData:responseObject withStatue:statue];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
@@ -415,10 +417,11 @@
 - (void)cancelOrderRequestWithCarno:(NSString *)cardno {
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/cancel_experience";
     NSDictionary *dic = @{@"cardno":cardno};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self cancelOrderRequestData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
@@ -448,12 +451,15 @@
     
     NSString *url = @"http://www.enuo120.com/index.php/app/Patient/experience_evaluate";
     NSDictionary *dic = @{@"cardno":cardno,@"pj":pjNumber};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:dic success:^(NSURLSessionDataTask *task, id responseObject) {
         [self evaluateRequestData:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 - (void)evaluateRequestData:(NSDictionary *)dic {
     UIView *bgView = [[UIView alloc]init];

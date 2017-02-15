@@ -512,14 +512,13 @@
     self.content = str1;
     NSString *url = [NSString stringWithFormat:str,name,self.dnumber,self.content,self.zh,self.service,self.level,self.huanj,self.wz];
     NSLog(@"url =%@",url);
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handleWithResponseObject:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error = %@",error);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
+    
 }
 - (void)handleWithResponseObject:(NSDictionary *)responseObject{
     NSString *ste = responseObject[@"data"];

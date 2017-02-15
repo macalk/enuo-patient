@@ -492,17 +492,12 @@ BMKCoordinateRegion region;
 - (void)requestData{
  //  char utf8Str = "杭州市";
      NSString *url = @"http://www.enuo120.com/index.php/app/hospital/map";
-    
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-   [manger POST:url parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-       
-   } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-       [self handleWithData:responseObject];
-       //NSLog(@"responseObject = %@",responseObject);
-   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-       
-   }];
-    
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [self handleWithData:responseObject];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (void)onGetGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error{
     NSLog(@"result = %@",result);

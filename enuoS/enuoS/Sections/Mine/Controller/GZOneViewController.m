@@ -172,14 +172,13 @@
     NSUserDefaults *stande = [NSUserDefaults standardUserDefaults];
     NSString *name = [stande objectForKey:@"name"];
     NSDictionary *headBody = @{@"username":name,@"type":@"0",@"did":dic};
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
-    [manger POST:url parameters:headBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:headBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handelWithPassGz:responseObject];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+    
 }
 - (void)handelWithPassGz:(NSDictionary *)dic{
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 9.0) {
@@ -211,17 +210,13 @@
     NSString *name = [stand objectForKey:@"name"];
     NSDictionary *headBody = @{@"username":name};
     
-    AFHTTPSessionManager *mager =[ AFHTTPSessionManager manager];
-    
-    [mager POST:url parameters:headBody progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    BaseRequest *request = [[BaseRequest alloc]init];
+    [request POST:url params:headBody success:^(NSURLSessionDataTask *task, id responseObject) {
         [self handelWithData:responseObject];
         [SVProgressHUD dismiss];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
- 
 }
 
 
