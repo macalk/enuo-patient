@@ -66,11 +66,7 @@ BMKMapManager* _mapManager;
     self.window.rootViewController = rootVC;
     [self.window makeKeyAndVisible];
     
-    
        [WXApi registerApp:@"wx0e5f661a5a2acbe8"];
-    
-    
-    
     
     //用户引导页
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];

@@ -69,6 +69,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = YES;
+
     //导航栏
     [self setupNav];
     //消息 tableView

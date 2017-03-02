@@ -201,7 +201,7 @@
 //筛选视图
 - (void)filtrateView {
     UIView *filtrateView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
-    filtrateView.backgroundColor = [UIColor whiteColor];
+    filtrateView.backgroundColor = [UIColor stringTOColor:@"#f4f4f7"];
     [self.view addSubview:filtrateView];
     
     /***简介视图***/
@@ -259,9 +259,9 @@
     imageView.image = [UIImage imageNamed:@"漏斗筛选"];
     [filtrateView addSubview:imageView];
     
-    UILabel *lineLabel = [[UILabel alloc]init];
-    lineLabel.backgroundColor = [UIColor lightGrayColor];
-    [filtrateView addSubview:lineLabel];
+//    UILabel *lineLabel = [[UILabel alloc]init];
+//    lineLabel.backgroundColor = [UIColor lightGrayColor];
+//    [filtrateView addSubview:lineLabel];
     
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -274,10 +274,10 @@
         make.size.mas_offset(CGSizeMake(12,14));
     }];
     
-    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(filtrateView);
-        make.height.mas_offset(@1);
-    }];
+//    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.bottom.equalTo(filtrateView);
+//        make.height.mas_offset(@1);
+//    }];
     
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc]init];
     [tapGes addTarget:self action:@selector(filtrateClick:)];
@@ -313,7 +313,7 @@
     
     hosFiltrateTabVC *filetTabVC = [[hosFiltrateTabVC alloc]initWithAreaArray:deskArr andSortArr:sunIllArr andTitleArr:titleArr];
     self.filetTabVC = filetTabVC;
-    filetTabVC.view.frame = CGRectMake(0, 32, kScreenWidth, kScreenHeigth-32-64);
+    filetTabVC.view.frame = CGRectMake(0, 44, kScreenWidth, kScreenHeigth-32-44);
     filetTabVC.view.tag = 1001;
 
 }
@@ -558,6 +558,7 @@
     
     
     cell.contentView.backgroundColor = [UIColor colorWithRed:243/255.0 green:243/255.0 blue:247/255.0 alpha:1];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
     tableView.separatorStyle = UITableViewCellSelectionStyleNone;

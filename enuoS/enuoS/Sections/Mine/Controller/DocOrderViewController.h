@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface DocOrderViewController : UIViewController
+@interface DocOrderViewController : RootViewController
 
 
 @property (nonatomic,copy)NSString *hosId;

@@ -1063,12 +1063,10 @@ UIButton *attentionBtn;
         docVC.docId = self.docId;
         docVC.docName = self.nameLabel.text;
         
+        docVC.hidesBottomBarWhenPushed = YES;
         docVC.view.backgroundColor = [UIColor whiteColor];
-        UINavigationController *naNC  = [[UINavigationController alloc]initWithRootViewController:docVC];
 
-        [self presentViewController:naNC animated:YES completion:^{
-            
-        }];
+        [self.navigationController pushViewController:docVC animated:YES];
     }else{
 
         

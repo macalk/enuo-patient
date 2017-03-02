@@ -699,6 +699,10 @@
 		18DDA1A31DE960C3002A225C /* 鼎@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DDA1A11DE960C3002A225C /* 鼎@2x.png */; };
 		18DDA1A41DE960C3002A225C /* 鼎@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DDA1A21DE960C3002A225C /* 鼎@3x.png */; };
 		18DDA1B21DE97BB7002A225C /* HosHomePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DDA1B11DE97BB7002A225C /* HosHomePageView.m */; };
+		18E7CE2C1E540268005D9383 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7CE2B1E540268005D9383 /* RootViewController.m */; };
+		18E7CE2F1E542479005D9383 /* DocOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7CE2E1E542479005D9383 /* DocOrderVC.m */; };
+		18E7CE321E581B8F005D9383 /* 评论-全@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E7CE301E581B8F005D9383 /* 评论-全@2x.png */; };
+		18E7CE331E581B8F005D9383 /* 评论-全@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E7CE311E581B8F005D9383 /* 评论-全@3x.png */; };
 		18E9FC3B1D407A1900B089C6 /* PromisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E9FC3A1D407A1900B089C6 /* PromisesViewController.m */; };
 		18EAC7561DE06D760033FB42 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EAC7551DE06D760033FB42 /* CoreText.framework */; };
 		18EAC75D1DE073D70033FB42 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EAC75C1DE073D70033FB42 /* libc++.tbd */; };
@@ -1703,6 +1707,12 @@
 		18DDA1B01DE97BB7002A225C /* HosHomePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HosHomePageView.h; sourceTree = "<group>"; };
 		18DDA1B11DE97BB7002A225C /* HosHomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HosHomePageView.m; sourceTree = "<group>"; };
 		18E7CE281E46CDCA005D9383 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		18E7CE2A1E540268005D9383 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		18E7CE2B1E540268005D9383 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		18E7CE2D1E542479005D9383 /* DocOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocOrderVC.h; sourceTree = "<group>"; };
+		18E7CE2E1E542479005D9383 /* DocOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocOrderVC.m; sourceTree = "<group>"; };
+		18E7CE301E581B8F005D9383 /* 评论-全@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论-全@2x.png"; sourceTree = "<group>"; };
+		18E7CE311E581B8F005D9383 /* 评论-全@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论-全@3x.png"; sourceTree = "<group>"; };
 		18E9FC391D407A1900B089C6 /* PromisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromisesViewController.h; sourceTree = "<group>"; };
 		18E9FC3A1D407A1900B089C6 /* PromisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromisesViewController.m; sourceTree = "<group>"; };
 		18EAC7551DE06D760033FB42 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -1944,6 +1954,7 @@
 				18132B391D34C33200E6D5CE /* NSNull+NullCast.m */,
 				18CFFA8D1DEDADF5007A22D3 /* FiltrateVC.h */,
 				18CFFA8E1DEDADF5007A22D3 /* FiltrateVC.m */,
+				18E7CE291E54024C005D9383 /* LZproject */,
 				18C13F0C1DF7E7EF00F9A128 /* AlertView */,
 				1809A8C01DE699260027B882 /* FlowLayout */,
 				18EFAC021DE32C88005359D1 /* ALiPay */,
@@ -2402,6 +2413,8 @@
 				18C1FA271D6BDD7600372EE1 /* HosDocViewController.m */,
 				18D5A7611D543933003275DD /* DocOrderViewController.h */,
 				18D5A7621D543933003275DD /* DocOrderViewController.m */,
+				18E7CE2D1E542479005D9383 /* DocOrderVC.h */,
+				18E7CE2E1E542479005D9383 /* DocOrderVC.m */,
 				18D5A8021D549251003275DD /* CheckSureController.h */,
 				18D5A8031D549251003275DD /* CheckSureController.m */,
 				18D5A8041D549251003275DD /* CheckSureController.xib */,
@@ -2759,6 +2772,8 @@
 		18B7E83C1D49EF5F00DC17A0 /* 切图ios1 */ = {
 			isa = PBXGroup;
 			children = (
+				18E7CE301E581B8F005D9383 /* 评论-全@2x.png */,
+				18E7CE311E581B8F005D9383 /* 评论-全@3x.png */,
 				18D2B0951E0A6766005D44F3 /* 优惠券@2x.png */,
 				18D2B0961E0A6766005D44F3 /* 优惠券@3x.png */,
 				1881B49C1E03DD800060A051 /* 劵-已使用@2x.png */,
@@ -3156,6 +3171,16 @@
 			path = RSA;
 			sourceTree = "<group>";
 		};
+		18E7CE291E54024C005D9383 /* LZproject */ = {
+			isa = PBXGroup;
+			children = (
+				18E7CE2A1E540268005D9383 /* RootViewController.h */,
+				18E7CE2B1E540268005D9383 /* RootViewController.m */,
+			);
+			name = LZproject;
+			path = enuoS/LZproject;
+			sourceTree = "<group>";
+		};
 		18ECA7431D6C3F5E0016DD58 /* SYStarRating */ = {
 			isa = PBXGroup;
 			children = (
@@ -3422,7 +3447,7 @@
 					181329BA1D34B9DB00E6D5CE = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = GN6M6G2R86;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -3783,6 +3808,7 @@
 				18ED40C91DD02A490092B9CF /* 约定病种@3x.png in Resources */,
 				18B7E9301D49EF6000DC17A0 /* 下拉-拷贝@3x.png in Resources */,
 				180620851DD2BC9B0042282F /* 关注-s3x.png in Resources */,
+				18E7CE331E581B8F005D9383 /* 评论-全@3x.png in Resources */,
 				1846EB5F1D4DD7D5005DF3DB /* 男背手臂.png in Resources */,
 				18B7E9DB1D49EF6000DC17A0 /* 设备医疗2@2x.png in Resources */,
 				1802C89A1D6FE54300831127 /* 绿色主页@3x.png in Resources */,
@@ -3894,6 +3920,7 @@
 				187CB9DA1D6197A300DC8CE4 /* GZHosTableViewCell.xib in Resources */,
 				18B7E9C11D49EF6000DC17A0 /* 组-6@2x.png in Resources */,
 				18B7E9451D49EF6000DC17A0 /* 价格@2x.png in Resources */,
+				18E7CE321E581B8F005D9383 /* 评论-全@2x.png in Resources */,
 				1846EB4F1D4DD7D5005DF3DB /* 女正面.png in Resources */,
 				18B7E9311D49EF6000DC17A0 /* 下拉@2x.png in Resources */,
 				18B7E95C1D49EF6000DC17A0 /* 内科icon@3x.png in Resources */,
@@ -4179,6 +4206,7 @@
 				187CB9B91D615C5C00DC8CE4 /* DoctorTableViewCell.m in Sources */,
 				1845C8B01DD71A9300657A31 /* MyOrderInfoModel.m in Sources */,
 				187CB9F01D61BFDF00DC8CE4 /* pjHosModel.m in Sources */,
+				18E7CE2C1E540268005D9383 /* RootViewController.m in Sources */,
 				18D5A78B1D544425003275DD /* PayDetailViewController.m in Sources */,
 				185D4DEA1D5C70CC0067A94C /* PiaoLiangViewController.m in Sources */,
 				1846EB6A1D4EFA11005DF3DB /* BodyModel.m in Sources */,
@@ -4195,6 +4223,7 @@
 				18CFFA441DED4A3D007A22D3 /* FindHosVC.m in Sources */,
 				18D9DBB01DD1BACA0043D7DE /* CustomCell.m in Sources */,
 				18132B401D34F17300E6D5CE /* FindHosModel.m in Sources */,
+				18E7CE2F1E542479005D9383 /* DocOrderVC.m in Sources */,
 				18132B4F1D35DC1300E6D5CE /* MineTableViewCell.m in Sources */,
 				18D5A7931D545F0E003275DD /* SureWeiXinModel.m in Sources */,
 				18D9DBB21DD1BACA0043D7DE /* MLMOptionSelectView.m in Sources */,
@@ -4414,8 +4443,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
+				DEVELOPMENT_TEAM = GN6M6G2R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4454,8 +4483,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enuo120;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a795f9f4-103d-4b70-b238-91b1d3da553e";
+				PROVISIONING_PROFILE_SPECIFIER = enuoNew;
 			};
 			name = Debug;
 		};
@@ -4467,8 +4496,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
+				DEVELOPMENT_TEAM = GN6M6G2R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4507,8 +4536,8 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enuo120;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a795f9f4-103d-4b70-b238-91b1d3da553e";
+				PROVISIONING_PROFILE_SPECIFIER = enuoNew;
 			};
 			name = Release;
 		};

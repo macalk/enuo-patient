@@ -75,7 +75,7 @@
     UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
     [titleLable setTextAlignment:NSTextAlignmentCenter];
     [titleLable setTextColor:[UIColor whiteColor]];
-    [titleLable setText:@"找医生"];
+    [titleLable setText:@"找医院"];
     titleLable.font = [UIFont boldSystemFontOfSize:18];
     self.navigationItem.titleView = titleLable;
     
@@ -287,7 +287,7 @@
         
         //筛选
         UIView *filtrateView = [[UIView alloc]init];
-        filtrateView.backgroundColor = [UIColor whiteColor];
+        filtrateView.backgroundColor = [UIColor stringTOColor:@"#eeeeee"];
         filtrateView.frame = CGRectMake(0, 44, kScreenWidth, 33);
         [baseView addSubview:filtrateView];
         
@@ -567,13 +567,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 137;
+    return 180;
 }
-
-
-
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PromiseHosViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];

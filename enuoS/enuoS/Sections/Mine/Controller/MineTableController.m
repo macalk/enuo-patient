@@ -94,8 +94,6 @@
     }else{
         return 10;
     }
-    
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -111,7 +109,6 @@
    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     return cell;
 }
-
 
 - (void)requeestStatueData{
     
@@ -134,11 +131,6 @@
     }else{
           [self creatHeadView];
     }
-
-   
-    
-   
-    
 }
 
 - (void)handleWithDataStatue:(NSDictionary *)dic{
@@ -148,14 +140,13 @@
     self.payLockStr = [dic[@"data"][@"pay_lock"] integerValue] ;
     
     self.statueStr = [dic[@"data"][@"statue"] integerValue];
-    NSLog(@"%@----%ld",self.lockStr,self.payLockStr);
+    NSLog(@"%@----%ld",self.lockStr,(long)self.payLockStr);
     [self.tableView reloadData];
         
     }else {
         
     }
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 3) {
@@ -197,7 +188,7 @@
         
         UIView *bleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 150)];
         
-        UIView *oneView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, 90)];
+        UIView *oneView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
         oneView.backgroundColor= [UIColor whiteColor];
         UIView *twoView = [[UIView alloc]initWithFrame:CGRectMake(0, 100, kScreenWidth, 50)];
         twoView.backgroundColor = [UIColor whiteColor];
@@ -349,7 +340,7 @@
           self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 130)];
         UIView *bleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 130)];
         
-        UIView *oneView = [[UIView alloc]initWithFrame:CGRectMake(0, 10, kScreenWidth, 70)];
+        UIView *oneView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 80)];
         oneView.backgroundColor= [UIColor whiteColor];
         UIView *twoView = [[UIView alloc]initWithFrame:CGRectMake(0, 80, kScreenWidth, 50)];
         twoView.layer.borderWidth = 0.5;

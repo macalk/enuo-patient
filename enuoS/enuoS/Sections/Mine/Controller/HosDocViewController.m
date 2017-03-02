@@ -51,9 +51,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SVProgressHUD show];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条底图"] forBarMetrics:0];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
+        
     [self requestData];
     [self creatTable];
 }

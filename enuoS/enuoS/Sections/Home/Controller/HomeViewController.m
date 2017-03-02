@@ -125,12 +125,16 @@
     [self creatFindDeskView];
   
 
-    UIImageView *imager = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, kScreenWidth, 35)];
+    UIImageView *imager = [[UIImageView alloc]init];
+    self.navigationItem.titleView  = imager;
+    [imager mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(kScreenWidth-20);
+        make.height.mas_equalTo(imager.mas_width).multipliedBy(0.09);
+    }];
     imager.image = [UIImage imageNamed:@"搜索框"];
     UITapGestureRecognizer *tapMenger = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTapWithSearchImage:)];
     imager.userInteractionEnabled = YES;
     [imager addGestureRecognizer:tapMenger];
-    self.navigationItem.titleView  = imager;
 
     self.tabBarController.tabBar.translucent = NO;
     

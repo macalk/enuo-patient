@@ -355,9 +355,8 @@
     
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 165;
+    return 210;
 }
 -(void)endRefresh{
     [self.tableView.mj_header endRefreshing];

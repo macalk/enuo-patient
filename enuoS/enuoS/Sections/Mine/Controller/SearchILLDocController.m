@@ -55,12 +55,12 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"白色返回"] style:UIBarButtonItemStyleDone target:self action:@selector(handleWithBack:)];
     self.navigationItem.leftBarButtonItem = leftItem;
     
-//    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-//    [titleLable setTextAlignment:NSTextAlignmentCenter];
-//    [titleLable setTextColor:[UIColor whiteColor]];
-//    [titleLable setText:[NSString stringWithFormat:@"%@:%@",self.illReceiver,self.treat]];
-//    titleLable.font = [UIFont boldSystemFontOfSize:18];
-//    self.navigationItem.titleView = titleLable;
+    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [titleLable setTextAlignment:NSTextAlignmentCenter];
+    [titleLable setTextColor:[UIColor whiteColor]];
+    [titleLable setText:[NSString stringWithFormat:@"%@",self.illReceiver]];
+    titleLable.font = [UIFont boldSystemFontOfSize:18];
+    self.navigationItem.titleView = titleLable;
     
     self.navigationController.navigationBar.barTintColor = [UIColor stringTOColor:@"#22ccc6"];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -75,6 +75,9 @@
     [SVProgressHUD show];
     [self requestData];
     [self creatTableView];
+    
+    self.navigationController.navigationBar.translucent = YES;
+
    
 }
 - (void)handleWithBack:(UIBarButtonItem *)sender{
@@ -158,7 +161,7 @@
     return 290;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 105;
+    return 150;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (self.mbDataArr.count != 0) {
@@ -167,6 +170,7 @@
         
         //bgView
         UIView *aView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
+        aView.backgroundColor = [UIColor whiteColor];
         
         //topView
         UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
@@ -179,6 +183,7 @@
         if ([model.treat isEqual:[NSNull null]] || model.treat == nil) {
             model.treat = @"";
         }
+        topLabel.textColor = [UIColor stringTOColor:@"#22ccc6"];
         topLabel.font = [UIFont systemFontOfSize:15];
         topLabel.text = [NSString stringWithFormat:@"%@:%@",model.ill,model.treat];
         [topView addSubview:topLabel];
@@ -288,6 +293,7 @@
         }
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     SearchillDocModel *model = self.docListArr[indexPath.row];
     cell.model = model;
     
@@ -315,10 +321,8 @@
     docOrderVC.classify = self.category;//
     docOrderVC.cycle = model.cycle;////约定周期
     
-    UINavigationController *naNC = [[UINavigationController alloc]initWithRootViewController:docOrderVC];
-    [self presentViewController:naNC animated:YES completion:^{
-        
-    }];
+//    UINavigationController *naNC = [[UINavigationController alloc]initWithRootViewController:docOrderVC];
+    [self.navigationController pushViewController:docOrderVC animated:YES];
     
     /***
     doVC.receiver =self.docArr[indexPath.row][@"id"];

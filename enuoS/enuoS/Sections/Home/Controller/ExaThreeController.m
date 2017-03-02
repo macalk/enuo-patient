@@ -16,26 +16,17 @@
 #import "DoctorViewController.h"
 @interface ExaThreeController ()
 
-
-
-
 @property (nonatomic,strong)NSMutableArray *dataArray;
-
-
 
 @end
 
 @implementation ExaThreeController
-
-
 
 - (NSMutableArray *)dataArray{
     if (!_dataArray) {
         self.dataArray = [NSMutableArray array];
     }return _dataArray;
 }
-
-
 
 - (instancetype)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
@@ -48,13 +39,8 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithTitle:@"刷新" style:UIBarButtonItemStyleDone target:self action:@selector(handleWithShaXin:)];
         self.navigationItem.rightBarButtonItem = rightItem;
         
-
-        
-        
     }return self;
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,12 +50,8 @@
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
     [self.tableView registerNib:[UINib nibWithNibName:@"PromiseDocViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     
-    
-    
     [self requestData];
-    
-    
-  
+
 }
 
 
@@ -101,7 +83,7 @@
     return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 140;
+    return 176;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -166,14 +148,10 @@
 - (void)handleWithData:(NSDictionary *)dic{
     NSArray *arr = dic[@"data"];
     
-    
     for (NSDictionary *temp in arr) {
         FindDocModel *model = [FindDocModel findDocModelInitWithDic:temp];
         [self.dataArray addObject:model];
     }[self.tableView reloadData];
-    
-    
-
     
 }
 

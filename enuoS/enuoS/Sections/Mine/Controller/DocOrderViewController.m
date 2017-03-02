@@ -336,16 +336,16 @@ typedef NS_ENUM(NSUInteger, TTGState) {
 }
 
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"绿色返回"] style:UIBarButtonItemStyleDone target:self action:@selector(handleWithBack:)];
-        self.navigationItem.leftBarButtonItem = leftItem;
-        
-        
-    }return self;
-    
-}
+//- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"绿色返回"] style:UIBarButtonItemStyleDone target:self action:@selector(handleWithBack:)];
+//        self.navigationItem.leftBarButtonItem = leftItem;
+//        
+//        
+//    }return self;
+//    
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -356,12 +356,15 @@ typedef NS_ENUM(NSUInteger, TTGState) {
     
     self.currentDepId = self.dep_id;
     
-    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    titleLable.text  = @"预约";
-    [titleLable setTextColor:[UIColor stringTOColor:@"#00b09f"]];
-    titleLable.font = [UIFont boldSystemFontOfSize:18];
-    titleLable.textAlignment = NSTextAlignmentCenter;
-    self.navigationItem.titleView = titleLable;
+//    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+//    titleLable.text  = @"预约";
+//    [titleLable setTextColor:[UIColor stringTOColor:@"#00b09f"]];
+//    titleLable.font = [UIFont boldSystemFontOfSize:18];
+//    titleLable.textAlignment = NSTextAlignmentCenter;
+//    self.navigationItem.titleView = titleLable;
+    
+    [self createCustomNavViewWithTitle:@"预约" andLeftImage:@"白色返回" withLeftTitle:nil andRightImage:nil withRightTitle:nil];
+    self.navigationController.navigationBar.translucent = YES;
     
     self.request = [[BaseRequest alloc]init];
     [self requestData];//请求网页信息
@@ -378,6 +381,9 @@ typedef NS_ENUM(NSUInteger, TTGState) {
         [self requestAppointWithIllID:self.illID];
     }
     
+}
+- (void)leftItemBack {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)handleWithBack:(UIBarButtonItem *)dic{
@@ -563,7 +569,11 @@ typedef NS_ENUM(NSUInteger, TTGState) {
     
     [hosLabel  mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(oneView.mas_left).with.offset(10);
-        make.top.equalTo (oneView.mas_top).with.offset(10);
+        if ([self.VIP isEqualToString:@"VIP"]) {
+            make.top.equalTo (oneView.mas_top).with.offset(74);
+        }else {
+            make.top.equalTo (oneView.mas_top).with.offset(10);
+        }
      }];
     [weakSelf.hosTextlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(hosLabel);
