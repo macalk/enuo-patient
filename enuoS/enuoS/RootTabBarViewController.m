@@ -11,6 +11,7 @@
 #import "PromisesViewController.h"
 #import "MineTableController.h"
 #import "PromiseScrollController.h"
+#import "HomeVC.h"
 @interface RootTabBarViewController ()
 
 @end
@@ -25,7 +26,7 @@
 
 
 - (void)creatViewController{
-    HomeViewController *homeVc = [[HomeViewController alloc]init];
+    HomeVC *homeVc = [[HomeVC alloc]init];
     UINavigationController *homeNc = [[UINavigationController alloc]initWithRootViewController:homeVc];
     
     homeNc.tabBarItem =[[UITabBarItem alloc]initWithTitle:@"首页" image:[[UIImage imageNamed:@"灰色主页"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"绿色主页"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

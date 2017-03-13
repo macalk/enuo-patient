@@ -12,44 +12,16 @@
 #import "Macros.h"
 @interface CarrWebController ()<ZLCWebViewDelegate>
 
-
-
 @end
 
 @implementation CarrWebController
 
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-        
-        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(handleWithBack:)];
-        self.navigationItem.leftBarButtonItem = leftItem;
-
-    }return self;
-}
-
-
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"导航条底图"] forBarMetrics:0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationItem.title = self.retitle;
-  [ self.navigationController.navigationBar setTitleTextAttributes:
     
+    [self createCustomNavViewWithTitle:nil andLeftImage:@"白色返回" withLeftTitle:nil andRightImage:nil withRightTitle:nil];
     
-  @{NSFontAttributeName:[UIFont systemFontOfSize:19],
-    
-    
-    NSForegroundColorAttributeName:[UIColor whiteColor]}];
     ZLCWebView *my = [[ZLCWebView alloc]initWithFrame:CGRectMake(0, 0,kScreenWidth , kScreenHeigth)];
     NSLog(@"self.left = %@",self.receiver);
     NSString * str = [self.receiver stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
@@ -61,12 +33,8 @@
 
 }
 
-
-- (void)handleWithBack:(UIBarButtonItem *)sender{
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-    
+- (void)leftItemBack {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)zlcwebViewDidStartLoad:(ZLCWebView *)webview
 {

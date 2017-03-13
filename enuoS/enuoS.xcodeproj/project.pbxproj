@@ -156,6 +156,10 @@
 		1846EB781D4F7B26005DF3DB /* ExaTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846EB771D4F7B26005DF3DB /* ExaTwoViewController.m */; };
 		1846EB7B1D4F7B77005DF3DB /* ExTwoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846EB7A1D4F7B77005DF3DB /* ExTwoModel.m */; };
 		1846EB7E1D4F7D37005DF3DB /* ExThreeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1846EB7D1D4F7D37005DF3DB /* ExThreeModel.m */; };
+		18485C771E7279A500F4778B /* LZScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18485C761E7279A500F4778B /* LZScrollView.m */; };
+		18485C7A1E72884200F4778B /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18485C791E72884200F4778B /* HomeView.m */; };
+		18485C811E76444A00F4778B /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18485C801E76444A00F4778B /* HomeVC.m */; };
+		18485C851E76456200F4778B /* ScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18485C841E76456200F4778B /* ScanVC.m */; };
 		18521C401D519E6A006D2E83 /* DocOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18521C3F1D519E69006D2E83 /* DocOrderModel.m */; };
 		18521C431D51A016006D2E83 /* illListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18521C421D51A016006D2E83 /* illListModel.m */; };
 		18521C461D51A3A2006D2E83 /* IllListDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18521C451D51A3A2006D2E83 /* IllListDetailModel.m */; };
@@ -993,6 +997,14 @@
 		1846EB7A1D4F7B77005DF3DB /* ExTwoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExTwoModel.m; sourceTree = "<group>"; };
 		1846EB7C1D4F7D37005DF3DB /* ExThreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExThreeModel.h; sourceTree = "<group>"; };
 		1846EB7D1D4F7D37005DF3DB /* ExThreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExThreeModel.m; sourceTree = "<group>"; };
+		18485C751E7279A500F4778B /* LZScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZScrollView.h; sourceTree = "<group>"; };
+		18485C761E7279A500F4778B /* LZScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZScrollView.m; sourceTree = "<group>"; };
+		18485C781E72884200F4778B /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
+		18485C791E72884200F4778B /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
+		18485C7F1E76444A00F4778B /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		18485C801E76444A00F4778B /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		18485C831E76456200F4778B /* ScanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanVC.h; sourceTree = "<group>"; };
+		18485C841E76456200F4778B /* ScanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanVC.m; sourceTree = "<group>"; };
 		18521C3E1D519E69006D2E83 /* DocOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocOrderModel.h; sourceTree = "<group>"; };
 		18521C3F1D519E69006D2E83 /* DocOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocOrderModel.m; sourceTree = "<group>"; };
 		18521C411D51A016006D2E83 /* illListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = illListModel.h; sourceTree = "<group>"; };
@@ -2039,6 +2051,9 @@
 		181329EF1D34BC3F00E6D5CE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				18485C7F1E76444A00F4778B /* HomeVC.h */,
+				18485C801E76444A00F4778B /* HomeVC.m */,
+				18485C821E76450600F4778B /* NewController */,
 				181329F01D34BC3F00E6D5CE /* Controller */,
 				181329F71D34BC3F00E6D5CE /* Model */,
 				18132A001D34BC3F00E6D5CE /* View */,
@@ -2182,6 +2197,8 @@
 				187CCC661D6D50A60017659E /* PiaoLiangCollectionViewCell.h */,
 				187CCC671D6D50A60017659E /* PiaoLiangCollectionViewCell.m */,
 				187CCC681D6D50A60017659E /* PiaoLiangCollectionViewCell.xib */,
+				18485C781E72884200F4778B /* HomeView.h */,
+				18485C791E72884200F4778B /* HomeView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2714,6 +2731,15 @@
 			path = body;
 			sourceTree = "<group>";
 		};
+		18485C821E76450600F4778B /* NewController */ = {
+			isa = PBXGroup;
+			children = (
+				18485C831E76456200F4778B /* ScanVC.h */,
+				18485C841E76456200F4778B /* ScanVC.m */,
+			);
+			path = NewController;
+			sourceTree = "<group>";
+		};
 		185D4DBC1D59C79B0067A94C /* WJDropDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -3176,6 +3202,8 @@
 			children = (
 				18E7CE2A1E540268005D9383 /* RootViewController.h */,
 				18E7CE2B1E540268005D9383 /* RootViewController.m */,
+				18485C751E7279A500F4778B /* LZScrollView.h */,
+				18485C761E7279A500F4778B /* LZScrollView.m */,
 			);
 			name = LZproject;
 			path = enuoS/LZproject;
@@ -3447,7 +3475,7 @@
 					181329BA1D34B9DB00E6D5CE = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = GN6M6G2R86;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -4080,6 +4108,7 @@
 				1802C83B1D6EDC0800831127 /* SearchDocViewController.m in Sources */,
 				18D5A7D41D5484C7003275DD /* StateTableController.m in Sources */,
 				18132A131D34BC3F00E6D5CE /* FindDocTableViewController.m in Sources */,
+				18485C7A1E72884200F4778B /* HomeView.m in Sources */,
 				18DB446F1DDEF0DF00A570A5 /* RSAEncryptor.m in Sources */,
 				185D4E601D5F02650067A94C /* VipTableViewCell.m in Sources */,
 				18F03B711D583157006AA6FC /* LLPayUtil.m in Sources */,
@@ -4181,6 +4210,7 @@
 				18EFAC6F1DE32C89005359D1 /* RSADataSigner.m in Sources */,
 				1881B4931E03D6260060A051 /* MyExperienceCardVC.m in Sources */,
 				185D4DD81D5C48D30067A94C /* DanDanTwoController.m in Sources */,
+				18485C811E76444A00F4778B /* HomeVC.m in Sources */,
 				18F03B9B1D597ABF006AA6FC /* PellTableViewCell.m in Sources */,
 				18B7E7D21D45ADE500DC17A0 /* DoctorViewController.m in Sources */,
 				18F2338C1D3A297E00CBC056 /* CheckPayCell.m in Sources */,
@@ -4216,6 +4246,7 @@
 				18132D321D37413000E6D5CE /* LogonViewController.m in Sources */,
 				1809A8C61DE699260027B882 /* UIView+Extension.m in Sources */,
 				1846EB6D1D4F0290005DF3DB /* ExaminavDetailController.m in Sources */,
+				18485C851E76456200F4778B /* ScanVC.m in Sources */,
 				1802C86C1D6FD49900831127 /* AssistiveTouch.m in Sources */,
 				18132B361D34BE5700E6D5CE /* HYViewController.m in Sources */,
 				1846EB711D4F3AE9005DF3DB /* BodyTableViewCell.m in Sources */,
@@ -4251,6 +4282,7 @@
 				187CB9F41D62A3FD00DC8CE4 /* SubzhuiViewController.m in Sources */,
 				18D5A8121D5492D6003275DD /* AppointViewCell.m in Sources */,
 				187CBA461D65B4B100DC8CE4 /* PayMimaViewController.m in Sources */,
+				18485C771E7279A500F4778B /* LZScrollView.m in Sources */,
 				18CC771E1DF13D1D00F14A59 /* ChangePhoneVC.m in Sources */,
 				18132A141D34BC3F00E6D5CE /* HomeViewController.m in Sources */,
 				18D5A7A51D5462C4003275DD /* SureViewController.m in Sources */,
@@ -4443,8 +4475,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				DEVELOPMENT_TEAM = GN6M6G2R86;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4483,8 +4515,9 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enuo120;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a795f9f4-103d-4b70-b238-91b1d3da553e";
-				PROVISIONING_PROFILE_SPECIFIER = enuoNew;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4496,8 +4529,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
-				DEVELOPMENT_TEAM = GN6M6G2R86;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4536,8 +4569,9 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.enuo120;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a795f9f4-103d-4b70-b238-91b1d3da553e";
-				PROVISIONING_PROFILE_SPECIFIER = enuoNew;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

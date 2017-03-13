@@ -335,7 +335,7 @@
         for (NSDictionary *temp in arr) {
             CarrModel *model = [CarrModel carrModelInItWithDic:temp];
             [self.dataCarrArray addObject:model];
-                }
+            }
         
         for (int i =0; i<3; i++) {
             CarrModel *model = self.dataCarrArray[i];
@@ -720,7 +720,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-      DeskModel *model = self.dataArray[indexPath.row];
+    DeskModel *model = self.dataArray[indexPath.row];
     FindDeskViewController *dinVC = [[FindDeskViewController alloc]init];
     dinVC.receiver = model.cid;
     dinVC.retitle = model.department;

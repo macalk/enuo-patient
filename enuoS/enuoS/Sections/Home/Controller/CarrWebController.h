@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface CarrWebController : UIViewController
+@interface CarrWebController : RootViewController
 @property (nonatomic,copy)NSString *receiver;
 @property (nonatomic,copy)NSString *retitle;
 @end
