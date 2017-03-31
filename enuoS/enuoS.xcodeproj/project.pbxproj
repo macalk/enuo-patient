@@ -4476,7 +4476,7 @@
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GN6M6G2R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4530,7 +4530,7 @@
 				CODE_SIGN_ENTITLEMENTS = enuoS/enuoS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiankang Jinnuo (GN6M6G2R86)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = GN6M6G2R86;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

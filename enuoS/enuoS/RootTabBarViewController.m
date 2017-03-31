@@ -24,7 +24,6 @@
     [self creatViewController];
 }
 
-
 - (void)creatViewController{
     HomeVC *homeVc = [[HomeVC alloc]init];
     UINavigationController *homeNc = [[UINavigationController alloc]initWithRootViewController:homeVc];

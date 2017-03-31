@@ -19,7 +19,7 @@
 //AVCaptureDeviceInput是AVCaptureDeviceInput 的一个子类,处理输入捕获回话,
 @property (strong,nonatomic)AVCaptureDeviceInput *input;
 
-//AVCaptureMetadataOutput 处理输出的捕获会话,捕获的对象传递给一个代理 AVCaptureMetadataOutputObjectsDelegate.协议方法在指定的派发队列上执行
+//AVCaptureMetadataOutput 处理输出的捕获会话,捕获的对象传递给一个代理AVCaptureMetadataOutputObjectsDelegate.协议方法在指定的派发队列上执行
 @property (strong,nonatomic)AVCaptureMetadataOutput *outPut;
 
 //管理输入和输出流,包含开启和停止会话方法

@@ -19,9 +19,10 @@
 @interface RegisterViewController ()<UITextFieldDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,strong)UITextField *accountTextField;
-
 @property (nonatomic,strong)UITextField *yzCodeText;
 @property (nonatomic,strong)UITextField *passText;
+
+@property (nonatomic,strong)UIImageView *imageBelow;
 
 
 @property (nonatomic,strong)NSDictionary *optionDic;//配置项；
@@ -68,23 +69,13 @@
         _yzCodeText = [[UITextField alloc]init];
     }return _yzCodeText;
 }
-
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"绿色返回"] style:UIBarButtonItemStyleDone target:self action:@selector(handleWithBack:)];
-        self.navigationItem.leftBarButtonItem = leftItem;
-    }return self;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
-
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
      self.optionDic =@{@"0":@"C",@"1":@"An",@"2":@"H@",@"3":@"D",@"4":@"R",@"5":@"Vc",@"6":@"XZ",@"7":@"J",@"8":@"m",@"9":@"Q"};
     self.markStr = @"1";
     self.view.backgroundColor = [UIColor whiteColor];
@@ -95,57 +86,88 @@
     self.navigationController.navigationBar.shadowImage=[UIImage new];
     [self getPublicKey];
     [self creatRegisterView];
+    [self createBackBtn];
 }
-
-- (void)handleWithBack:(UIBarButtonItem *)sender{
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+- (void)createBackBtn {
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(10, 26, 21, 21);
+    [backBtn setImage:[UIImage imageNamed:@"白色返回_N"] forState:normal];
+    [backBtn addTarget:self action:@selector(handleWithBack:) forControlEvents:UIControlEventTouchUpInside];
+    [self.imageBelow addSubview:backBtn];
+    
 }
-
-
-
+- (void)handleWithBack:(UIButton *)sender{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)creatRegisterView{
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIImageView *imageBelow = [[UIImageView alloc]initWithFrame:self.view.frame];
+    self.imageBelow = imageBelow;
     
     [self.view addSubview: imageBelow];
     
     imageBelow.userInteractionEnabled = YES;//打开响应者链
-    imageBelow.image = [UIImage imageNamed:@"e诺背景"];
+    imageBelow.image = [UIImage imageNamed:@"e诺背景_N"];
+    
+    UIImageView *logoImageView = [[UIImageView alloc]init];
+    logoImageView.image = [UIImage imageNamed:@"e诺图标_N"];
+    [imageBelow addSubview:logoImageView];
+    [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(imageBelow);
+        make.top.equalTo(imageBelow).with.offset(60);
+        make.size.mas_offset(CGSizeMake(80, 80));
+    }];
+    UILabel *logoLabel = [[UILabel alloc]init];
+    logoLabel.textAlignment = NSTextAlignmentCenter;
+    logoLabel.text = @"约定医疗";
+    logoLabel.textColor = [UIColor whiteColor];
+    logoLabel.font = [UIFont systemFontOfSize:20];
+    [imageBelow addSubview:logoLabel];
+    [logoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(logoImageView);
+        make.top.equalTo(logoImageView.mas_bottom).with.offset(8);
+        make.width.mas_offset(100);
+    }];
+
     
     
     UIView *accountView = [[UIView alloc]init];//账号view
     accountView.backgroundColor = [UIColor whiteColor];
-    accountView.alpha = 0.7;
-    accountView.layer.cornerRadius = 20;
-    accountView.clipsToBounds = YES;
     [imageBelow addSubview:accountView];
     
     UIView *yzCodeView = [[UIView alloc]init];//验证码view
     yzCodeView.backgroundColor = [UIColor whiteColor];
-    yzCodeView.alpha = 0.7;
-    yzCodeView.layer.cornerRadius = 20;
-    yzCodeView.clipsToBounds = YES;
     [imageBelow addSubview:yzCodeView];
     
-    UILabel *accountLabel = [[UILabel alloc]init];//
-    accountLabel.text = @"账号";
-    accountLabel.backgroundColor = [UIColor clearColor];
-    [accountView addSubview:accountLabel];
+    UIView *passwordView = [[UIView alloc]init];//密码view
+    passwordView.backgroundColor = [UIColor whiteColor];
+    [imageBelow addSubview:passwordView];
     
+    
+    UIImageView *accountImageView = [[UIImageView alloc]init];
+    accountImageView.image = [UIImage imageNamed:@"用户名_N"];
+    [accountView addSubview:accountImageView];
+    [accountImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(accountView).with.offset(11);
+        make.centerY.equalTo(accountView);
+        make.size.mas_equalTo(CGSizeMake(17, 19));
+    }];
     self.accountTextField.placeholder = @"请输入手机号";
     self.accountTextField.font = [UIFont systemFontOfSize:13.0];
     [accountView addSubview:self.accountTextField];
 
     
-    UILabel *yzCodeLabel = [[UILabel alloc]init];
-    yzCodeLabel.text = @"验证码";
-    yzCodeLabel.backgroundColor = [UIColor clearColor];
-    [yzCodeView addSubview:yzCodeLabel];
-    
+    UIImageView *cordImageView = [[UIImageView alloc]init];
+    cordImageView.image = [UIImage imageNamed:@"验证码_N"];
+    [yzCodeView addSubview:cordImageView];
+    [cordImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(yzCodeView).with.offset(10);
+        make.centerY.equalTo(yzCodeView);
+        make.size.mas_equalTo(CGSizeMake(21, 23));
+    }];
     self.yzCodeText.placeholder = @"请输入验证码";
     self.yzCodeText.font = [UIFont systemFontOfSize:13.0];
     [yzCodeView addSubview:self.yzCodeText];
@@ -156,22 +178,35 @@
     [_secButton addTarget:self action:@selector(handleWithVerify:) forControlEvents:UIControlEventTouchUpInside];
     [yzCodeView addSubview:_secButton];
     
-    UIButton *nextStepBtn = [[UIButton alloc]init];
-    nextStepBtn.layer.cornerRadius = 20;
-    nextStepBtn.clipsToBounds = YES;
-    [nextStepBtn setTitle:@"下一步" forState:normal];
-    [nextStepBtn setTitleColor:[UIColor whiteColor] forState:normal];
-    [nextStepBtn setBackgroundColor:[UIColor stringTOColor:@"#2fbcaf"]];
-    [nextStepBtn addTarget:self action:@selector(nextStepBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [imageBelow addSubview:nextStepBtn];
+    
+    UIImageView *passwordImageView = [[UIImageView alloc]init];
+    passwordImageView.image = [UIImage imageNamed:@"密码_N"];
+    [passwordView addSubview:passwordImageView];
+    [passwordImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(passwordView).with.offset(11);
+        make.centerY.equalTo(passwordView);
+        make.size.mas_equalTo(CGSizeMake(17, 19));
+    }];
+    self.passText.placeholder = @"6-12位字母加数字的组合密码";
+    self.passText.font = [UIFont systemFontOfSize:13.0];
+    [passwordView addSubview:self.passText];
 
+    
+    
+//    UIButton *nextStepBtn = [[UIButton alloc]init];
+//    nextStepBtn.layer.cornerRadius = 20;
+//    nextStepBtn.clipsToBounds = YES;
+//    [nextStepBtn setTitle:@"下一步" forState:normal];
+//    [nextStepBtn setTitleColor:[UIColor whiteColor] forState:normal];
+//    [nextStepBtn setBackgroundColor:[UIColor stringTOColor:@"#2fbcaf"]];
+//    [nextStepBtn addTarget:self action:@selector(nextStepBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [imageBelow addSubview:nextStepBtn];
     
     UIButton *pressButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [pressButton setImage:[UIImage imageNamed:@"勾"] forState:UIControlStateNormal];
     UIButton *pressTwoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [pressTwoButton setImage:[UIImage imageNamed:@"勾"] forState:UIControlStateNormal];
 
-        
     UILabel *pressLabel = [[UILabel alloc]init];
     pressLabel.text = @"已阅读,并同意使用";
     pressLabel.textColor = [UIColor grayColor];
@@ -181,7 +216,6 @@
     textButton.titleLabel.font = [UIFont systemFontOfSize:11.0];
     [textButton setTitleColor:[UIColor colorWithRed:35/255.0 green:157/255.0 blue:233/255.0 alpha:1] forState:UIControlStateNormal];
     [textButton addTarget:self action:@selector(handleWithtext:) forControlEvents:UIControlEventTouchUpInside];
-    
     
     UILabel *pressTwoLabel = [[UILabel alloc]init];
     pressTwoLabel.text = @"已阅读,并同意使用";
@@ -193,15 +227,12 @@
     [textTwoButton setTitleColor:[UIColor colorWithRed:35/255.0 green:157/255.0 blue:233/255.0 alpha:1] forState:UIControlStateNormal];
     [textTwoButton addTarget:self action:@selector(handleWithtext:) forControlEvents:UIControlEventTouchUpInside];
     
-
-//    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [registerButton setImage:[UIImage imageNamed:@"注册"] forState:UIControlStateNormal];
-//    
-//    
-//    [registerButton addTarget:self action:@selector(handleWithRegister:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    
+    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    registerButton.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.3];
+    [registerButton setTitle:@"注册" forState:normal];
+    [imageBelow addSubview:registerButton];
+    registerButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [registerButton addTarget:self action:@selector(handleWithRegister:) forControlEvents:UIControlEventTouchUpInside];
     
     [imageBelow addSubview:pressLabel];
     [imageBelow addSubview:pressButton];
@@ -211,75 +242,82 @@
     [imageBelow addSubview:pressTwoButton];
     [imageBelow addSubview:textTwoButton];
     
-    
         __weak typeof (self) weakSelf = self;
     
     [accountView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo (imageBelow);
-        make.centerY.mas_equalTo(imageBelow).with.offset(-80);
+        make.top.equalTo(logoLabel.mas_bottom).with.offset(20);
+//        make.centerY.mas_equalTo(imageBelow).with.offset(-80);
         make.width.mas_equalTo(@250);
-        make.height.mas_equalTo(@40);
+        make.height.mas_equalTo(@37);
     }];
     [yzCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo (imageBelow);
-        make.top.equalTo(accountView.mas_bottom).with.offset(23);
+        make.top.equalTo(accountView.mas_bottom).with.offset(11);
         make.width.mas_equalTo(@250);
-        make.height.mas_equalTo(@40);
+        make.height.mas_equalTo(@37);
     }];
     
-    [nextStepBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo (imageBelow);
-        make.top.equalTo(yzCodeLabel.mas_bottom).with.offset(23);
+        make.top.equalTo(yzCodeView.mas_bottom).with.offset(11);
         make.width.mas_equalTo(@250);
-        make.height.mas_equalTo(@40);
+        make.height.mas_equalTo(@37);
 
     }];
+    
+//    [nextStepBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo (imageBelow);
+//        make.top.equalTo(yzCodeLabel.mas_bottom).with.offset(23);
+//        make.width.mas_equalTo(@250);
+//        make.height.mas_equalTo(@40);
+//
+//    }];
 
-    [accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(accountView);
-        make.left.equalTo(accountView.mas_left).with.offset(20);
-        make.height.mas_equalTo(@40);
-
-    }];
-    [yzCodeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(yzCodeView);
-        make.left.equalTo(yzCodeView.mas_left).with.offset(20);
-        make.height.mas_equalTo(@40);
-
-    }];
+//    [accountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(accountView);
+//        make.left.equalTo(accountView.mas_left).with.offset(20);
+//        make.height.mas_equalTo(@40);
+//
+//    }];
+//    [yzCodeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(yzCodeView);
+//        make.left.equalTo(yzCodeView.mas_left).with.offset(20);
+//        make.height.mas_equalTo(@40);
+//
+//    }];
     
     [weakSelf.accountTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(accountView.mas_left).with.offset(85);
+        make.left.equalTo(accountImageView.mas_right).with.offset(18);
         make.right.equalTo(accountView.mas_right);
         make.centerY.equalTo(accountView);
-        make.height.mas_equalTo(@40);
-        
-        
     }];
     
-    [weakSelf.yzCodeText mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(yzCodeView.mas_left).with.offset(85);
-        make.right.equalTo(weakSelf.secButton.mas_left);
-        make.centerY.equalTo(yzCodeView);
-        make.height.mas_equalTo(@40);
-        make.width.mas_equalTo(@85);
-        
-        
-    }];
-
-
+    
     [ weakSelf.secButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo( weakSelf.yzCodeText.mas_right);
         make.top.equalTo (yzCodeView.mas_top);
         make.right.equalTo (yzCodeView.mas_right);
         make.bottom.equalTo (yzCodeView.mas_bottom);
-        
     }];
+    [weakSelf.yzCodeText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(cordImageView.mas_right).with.offset(16);
+        make.right.equalTo(weakSelf.secButton.mas_left);
+        make.centerY.equalTo(yzCodeView);
+        make.width.mas_equalTo(@85);
+    }];
+    [weakSelf.passText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(passwordImageView.mas_right).with.offset(18);
+        make.right.equalTo(passwordView.mas_right);
+        make.centerY.equalTo(passwordView);
+    }];
+
+
+    
     
     //第一组条款
     [pressButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(nextStepBtn);
-        make.top.equalTo(nextStepBtn.mas_bottom).with.offset(8);
+        make.left.equalTo(passwordView);
+        make.top.equalTo(passwordView.mas_bottom).with.offset(8);
         make.width.mas_equalTo(@15);
         make.height.mas_equalTo(@15);
     }];
@@ -307,9 +345,14 @@
         make.centerY.equalTo(pressTwoLabel);
         make.left.equalTo(pressTwoLabel.mas_right);
     }];
+    
+    [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(imageBelow);
+        make.width.mas_equalTo(passwordView);
+        make.height.mas_equalTo(37);
+        make.top.equalTo(pressTwoButton.mas_bottom).with.offset(10);
+    }];
 
-    
-    
 }
 
 - (void)handleWithtext:(UIButton *)sender{

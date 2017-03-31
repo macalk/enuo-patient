@@ -10,26 +10,25 @@
 #import "ZLCWebView.h"
 #define isiOS8 __IPHONE_OS_VERSION_MAX_ALLOWED>=__IPHONE_8_0
 #import "Macros.h"
+
 @interface CarrWebController ()<ZLCWebViewDelegate>
 
 @end
 
 @implementation CarrWebController
 
-
 - (void)viewDidLoad {
-    [super viewDidLoad];
     
+    [super viewDidLoad];
     [self createCustomNavViewWithTitle:nil andLeftImage:@"白色返回" withLeftTitle:nil andRightImage:nil withRightTitle:nil];
     
     ZLCWebView *my = [[ZLCWebView alloc]initWithFrame:CGRectMake(0, 0,kScreenWidth , kScreenHeigth)];
     NSLog(@"self.left = %@",self.receiver);
     NSString * str = [self.receiver stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
     [my loadURLString:str];
-//    NSString    *str= @"http://mp.weixin.qq.com/s?__biz=MzI0NDA1NzQxMw==&amp;mid=2649775638&amp;idx=1&amp;sn=0781b5e10a4aa35f46bedaad4b3dfcb6&amp;scene=0#wechat_redirect";
+    
     my.delegate = self;
     [self.view addSubview:my];
-    
 
 }
 

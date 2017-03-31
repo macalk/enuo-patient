@@ -41,7 +41,6 @@
 
 @implementation MineTableController
 
-
 - (void)customNavView {
         
     self.navigationController.navigationBar.barTintColor = [UIColor stringTOColor:@"#22ccc6"];
